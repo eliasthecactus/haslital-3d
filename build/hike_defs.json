@@ -1,0 +1,247 @@
+{
+ "via-alpina-scheidegg": {
+  "rels": [
+   14249134
+  ],
+  "from": [
+   8.18427,
+   46.72736
+  ],
+  "cut_at_max": true,
+  "diff": "mountain"
+ },
+ "via-alpina-engstlenalp": {
+  "rels": [
+   14249135
+  ],
+  "from": [
+   8.35,
+   46.774
+  ],
+  "diff": "mountain"
+ },
+ "viaberna-rosenlaui-reuti": {
+  "rels": [
+   16460708
+  ],
+  "from": [
+   8.15349,
+   46.68029
+  ],
+  "diff": "mountain"
+ },
+ "viaberna-reuti-engstlenalp": {
+  "rels": [
+   19713588
+  ],
+  "from": [
+   8.20885,
+   46.73276
+  ],
+  "diff": "mountain"
+ },
+ "viaberna-engstlenalp-gadmen": {
+  "rels": [
+   19748507
+  ],
+  "from": [
+   8.35,
+   46.774
+  ],
+  "diff": "mountain"
+ },
+ "four-lakes": {
+  "rels": [
+   2384456
+  ],
+  "from": [
+   8.27,
+   46.775
+  ],
+  "diff": "mountain"
+ },
+ "planplatten-melchsee": {
+  "rels": [
+   2439160,
+   2439161
+  ],
+  "from": [
+   8.25522,
+   46.73671
+  ]
+ },
+ "kaeserstatt-planplatten": {
+  "rels": [
+   2400676,
+   2400675
+  ],
+  "from": [
+   8.21894,
+   46.75765
+  ]
+ },
+ "zwergenweg-lischen": {
+  "rels": [
+   8125097
+  ],
+  "from": [
+   8.21894,
+   46.75765
+  ],
+  "diff": "hiking"
+ },
+ "gelmer-hut": {
+  "rels": [
+   1115022,
+   1115011
+  ],
+  "from": [
+   8.32123,
+   46.61412
+  ]
+ },
+ "windegg-hut": {
+  "rels": [
+   5364871
+  ],
+  "from": [
+   8.33606,
+   46.70431
+  ]
+ },
+ "trift-hut": {
+  "rels": [
+   5364870,
+   5364869
+  ],
+  "from": [
+   8.33606,
+   46.70431
+  ]
+ },
+ "grimselsee-trail": {
+  "rels": [
+   19678467
+  ],
+  "from": [
+   8.33168,
+   46.57158
+  ]
+ },
+ "oberaar": {
+  "rels": [
+   19678088
+  ],
+  "from": [
+   8.3377,
+   46.56152
+  ]
+ },
+ "baechlital-hut": {
+  "rels": [
+   19681400
+  ],
+  "from": [
+   8.335,
+   46.585
+  ]
+ },
+ "maegisalp-gummen": {
+  "rels": [
+   3975767,
+   9896741
+  ],
+  "from": [
+   8.2366,
+   46.74925
+  ]
+ },
+ "bruenig-brienzwiler": {
+  "rels": [
+   17924897,
+   17924896
+  ],
+  "from": [
+   8.137,
+   46.7569
+  ]
+ },
+ "reichenbachtal": {
+  "rels": [
+   12899880,
+   12911379
+  ],
+  "from": [
+   8.15349,
+   46.68029
+  ],
+  "diff": "hiking"
+ },
+ "scheidegg-schwarzwaldalp": {
+  "rels": [
+   16457507,
+   2407588
+  ],
+  "from": [
+   8.13385,
+   46.67669
+  ]
+ },
+ "engstlenalp-jochpass": {
+  "rels": [
+   2387119
+  ],
+  "from": [
+   8.35,
+   46.774
+  ]
+ },
+ "muggestutz": {
+  "rels": [
+   11380426
+  ],
+  "from": [
+   8.2366,
+   46.74925
+  ],
+  "diff": "hiking"
+ },
+ "alpbach-gorge": {
+  "rels": [
+   1231922
+  ],
+  "from": [
+   8.18427,
+   46.72736
+  ],
+  "diff": "hiking"
+ },
+ "rosenlaui-gorge": {
+  "rels": [
+   3086255
+  ],
+  "from": [
+   8.1555,
+   46.6783
+  ],
+  "diff": "hiking"
+ },
+ "engelhorn-hut": {
+  "rels": [
+   12911377
+  ],
+  "from": [
+   8.1555,
+   46.6783
+  ]
+ },
+ "trift-bridge": {
+  "rels": [
+   5364870
+  ],
+  "from": [
+   8.33606,
+   46.70431
+  ]
+ }
+}

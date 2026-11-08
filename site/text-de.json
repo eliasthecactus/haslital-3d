@@ -1,0 +1,602 @@
+{
+ "ui": {
+  "lang": "Deutsch",
+  "brandSub": "Meiringen · Hasliberg · Grimsel",
+  "loading": "Das Haslital wird geladen",
+  "welcomeKicker": "Berner Oberland",
+  "welcomeTitle": "Willkommen im Haslital",
+  "welcomeText": "Vom Meringue-Dorf Meiringen bis zum Granit der Grimsel: Schluchten, Wasserfälle, Bergseen und einige der steilsten Bahnen der Alpen. Wählen Sie eine Region oder ein Ausflugsziel und fliegen Sie direkt hin.",
+  "hint": "Ziehen zum Drehen · Scrollen oder Zwei-Finger-Geste zum Zoomen",
+  "overview": "Ganzes Tal",
+  "tour": "Rundflug",
+  "regions": "Regionen",
+  "allRegions": "Alle Regionen",
+  "categories": "Erleben",
+  "allCats": "Alles",
+  "filters": "Geeignet für",
+  "f_wheelchair": "Rollstuhl",
+  "f_dogs": "Hunde willkommen",
+  "f_family": "Familien",
+  "f_indoor": "Regentage",
+  "f_free": "Gratis",
+  "results": "{n} Ausflugsziele",
+  "result1": "1 Ausflugsziel",
+  "noResults": "Kein Ausflugsziel passt zu allen Filtern. Entfernen Sie einen Filter, um mehr zu sehen.",
+  "clear": "Filter zurücksetzen",
+  "fromStation": "ab Bahnhof Meiringen",
+  "here": "im Dorf",
+  "close": "Schliessen",
+  "openPage": "Details",
+  "about": "Überblick",
+  "highlights": "Höhepunkte",
+  "goodToKnow": "Gut zu wissen",
+  "gettingThere": "Anreise",
+  "links": "Links",
+  "nearby": "In der Nähe",
+  "inRegion": "Ausflugsziele in dieser Region",
+  "explore": "{region} entdecken",
+  "showAllPlaces": "Alle Ausflugsziele zeigen",
+  "elevation": "Höhe",
+  "season": "Saison",
+  "duration": "Zeitbedarf",
+  "wheelchair": "Rollstuhl",
+  "dogs": "Hunde",
+  "family": "Familien",
+  "indoor": "Regentage",
+  "price": "Eintritt",
+  "yes": "Rollstuhlgängig",
+  "partly": "Teilweise rollstuhlgängig",
+  "no": "Nicht rollstuhlgängig",
+  "dogsYes": "Willkommen",
+  "dogsNo": "Nicht erlaubt",
+  "familyYes": "Ideal für Familien",
+  "indoorYes": "Auch bei Regen",
+  "freeYes": "Gratis",
+  "freeNo": "Mit Ticket",
+  "s_all": "Ganzjährig",
+  "s_summer": "Sommersaison",
+  "s_summer-winter": "Sommer und Winter",
+  "s_spring-autumn": "Frühling bis Herbst",
+  "d_half day": "Ein halber Tag",
+  "d_full day": "Ein ganzer Tag",
+  "a_stop": "Mit Zug oder Bus bis {stop}",
+  "a_walk": "{min} Min. zu Fuss ab Bahnhof {stop}",
+  "a_postbus": "Mit dem Postauto bis Haltestelle {stop}",
+  "l_official": "Offizielle Website",
+  "l_festival": "Brünigschwinget",
+  "l_rail": "Zentralbahn: Fahrplan und Tickets",
+  "l_hotel": "Hotel Schwarzwaldalp",
+  "l_region": "Grimselwelt",
+  "l_regionPage": "{region} auf haslital.swiss",
+  "l_map": "In der swisstopo-Karte öffnen",
+  "l_directions": "Reise planen",
+  "prev": "Zurück",
+  "next": "Weiter",
+  "placeOf": "{i} von {n}",
+  "credit": "Kartendaten © swisstopo, © OpenStreetMap-Mitwirkende",
+  "loadError": "Die Karte konnte nicht geladen werden. Bitte laden Sie die Seite neu.",
+  "a_lift": "Mit der Bahn bis {stop}",
+  "route": "Route",
+  "distance": "Distanz",
+  "ascent": "Aufstieg",
+  "descent": "Abstieg",
+  "highest": "Höchster Punkt",
+  "difficulty": "Wegkategorie",
+  "hikeTime": "Wanderzeit",
+  "diff_hiking": "Wanderweg",
+  "diff_mountain": "Bergwanderweg",
+  "diff_alpine": "Alpinwanderweg",
+  "profile": "Höhenprofil",
+  "timeNote": "Reine Wanderzeit ohne Pausen",
+  "l_viaalpina": "Via Alpina",
+  "l_frutt": "Melchsee-Frutt",
+  "l_lifts": "Bergbahnen Meiringen-Hasliberg",
+  "l_hut": "Website der Hütte",
+  "l_gelmerbahn": "Gelmerbahn",
+  "l_triftbahn": "Triftbahn",
+  "l_hospiz": "Grimsel Hospiz",
+  "l_oberaarhaus": "Berghaus Oberaar",
+  "l_hotel2": "Hotel Engstlenalp"
+ },
+ "cats": {
+  "nature": "Wasser & Natur",
+  "gorges": "Schluchten",
+  "views": "Aussicht & Gipfel",
+  "culture": "Kultur & Museen",
+  "lifts": "Bergbahnen",
+  "active": "Aktiv & Abenteuer",
+  "hiking": "Wandern"
+ },
+ "regions": {
+  "meiringen": {
+   "name": "Meiringen",
+   "intro": "Das Hauptdorf des Tals: Reichenbachfall, Aareschlucht und Sherlock Holmes Museum liegen in Gehdistanz zum Bahnhof. Der Überlieferung nach erhielt hier die Meringue ihren Namen."
+  },
+  "hasliberg": {
+   "name": "Hasliberg",
+   "intro": "Eine Sonnenterrasse hoch über Meiringen, mit Luftseilbahn und Gondeln verbunden mit Mägisalp, Käserstatt und Planplatten. Im Sommer lieben Familien die Zwergenwege, im Winter ist hier das Skigebiet des Tals."
+  },
+  "rosenlaui": {
+   "name": "Rosenlaui",
+   "intro": "Das stille Reichenbachtal unter Engelhörnern und Wetterhorn, mit dem Postauto ab Meiringen erreichbar. Gletscherschlucht, historisches Hotel und alte Säge säumen die Strasse Richtung Grosse Scheidegg."
+  },
+  "grimselwelt": {
+   "name": "Grimselwelt",
+   "intro": "Granit, Stauseen und Wasserfälle an der Strasse zum Grimselpass. Fahren Sie mit der steilsten offenen Standseilbahn Europas, überqueren Sie die Brücke hoch über dem Handeckfall und übernachten Sie im Grimsel Hospiz."
+  },
+  "gadmental": {
+   "name": "Gadmental",
+   "intro": "Ein wildes Seitental an der Sustenstrasse. Die Triftbahn führt zu einer der spektakulärsten Hängebrücken der Alpen, die Tällibahn zu einem berühmten Klettersteig."
+  },
+  "engstlenalp": {
+   "name": "Engstlenalp",
+   "intro": "Zuhinterst im Gental endet die Postautostrasse am Engstlensee, einem klaren Bergsee unter der Titliskette mit einem historischen Berghotel am Ufer."
+  },
+  "nearby": {
+   "name": "Umgebung",
+   "intro": "Ausflüge knapp ausserhalb des Haslitals, leicht mit einem Aufenthalt in Meiringen zu verbinden."
+  }
+ },
+ "places": {
+  "meiringen-village": {
+   "name": "Dorf Meiringen",
+   "tag": "Das Herz des Haslitals",
+   "text": "Meiringen liegt auf dem flachen Talboden, wo die Aare ihre Schluchten verlässt und Richtung Brienzersee fliesst. Die Dorfbrände von 1879 und 1891 zerstörten einen grossen Teil des alten Holzdorfs, darum prägen Steinhäuser aus den Jahren danach das Zentrum. Cafés, Geschäfte und Bahnhof liegen nur wenige Schritte auseinander.",
+   "hl": [
+    "Eine Meringue probieren, dort wo sie der Überlieferung nach ihren Namen erhielt",
+    "Vom Bahnhof zur Kirche und zur Sherlock-Holmes-Statue schlendern",
+    "Ausgangspunkt für die Hasliberg-Bahn und den Reichenbachfall"
+   ]
+  },
+  "sherlock-holmes-museum": {
+   "name": "Sherlock Holmes Museum",
+   "tag": "Baker Street 221B in den Alpen",
+   "text": "In der Englischen Kirche im Zentrum von Meiringen steht eine originalgetreue Nachbildung des Salons in der Baker Street 221B. Arthur Conan Doyle kannte das Tal gut und wählte den Wasserfall oberhalb des Dorfes für den letzten Kampf zwischen Holmes und Professor Moriarty. Draussen auf dem Platz wartet Holmes in Bronze.",
+   "hl": [
+    "Nachbildung des berühmten Salons in der Baker Street",
+    "Sherlock-Holmes-Statue auf dem Conan-Doyle-Platz",
+    "Kombitickets mit der Reichenbachfall-Bahn"
+   ]
+  },
+  "reichenbach-falls": {
+   "name": "Reichenbachfall",
+   "tag": "Wo Sherlock Holmes verschwand",
+   "text": "Der Reichenbach stürzt rund 120 Meter über die Südflanke des Tals. Die nostalgische Standseilbahn mit ihren originalen 24-plätzigen Wagen fährt ab Willigen über Bach und Schlucht hinauf zu den Aussichtspunkten. In «Das letzte Problem» liess Conan Doyle Holmes und Moriarty hier in die Tiefe stürzen, ein weisser Stern am Fels markiert die Stelle.",
+   "hl": [
+    "Historische Standseilbahn mit Originalwagen",
+    "Aussichtspunkte direkt am 120 m hohen Fall",
+    "Der weisse Stern, wo Holmes stürzte"
+   ]
+  },
+  "aare-gorge": {
+   "name": "Aareschlucht",
+   "tag": "1,4 km durch den Fels",
+   "text": "In Jahrtausenden haben Aaregletscher und Aare den Kirchet durchsägt, den Felsriegel zwischen Meiringen und Innertkirchen. Stege führen durch die 1,4 km lange Schlucht, bis zu 200 Meter tief und stellenweise nur etwa einen Meter breit, vorbei an Gletschermühlen und glatt geschliffenem Kalkstein. Der Zug hält bei beiden Eingängen.",
+   "hl": [
+    "Stege tief in der engen Schlucht",
+    "Gletschermühlen und geschliffener Kalkstein",
+    "Bahnhaltestelle beim West- und beim Osteingang"
+   ]
+  },
+  "alpbach-gorge": {
+   "name": "Alpbachschlucht",
+   "tag": "Ein Wasserfall am Dorfrand",
+   "text": "Der Alpbach stürzt vom Hasliberg direkt hinter Meiringen ins Tal. Ein Felspfad führt neben den Fällen durch die Schlucht hinauf, und an seinem Ende ragt eine Aussichtsplattform sechs Meter über den Schluchtrand hinaus.",
+   "hl": [
+    "Wasserfall nur wenige Minuten vom Zentrum",
+    "Aussichtsplattform sechs Meter über der Schlucht",
+    "Kurzer, erfrischender Spaziergang an heissen Tagen"
+   ]
+  },
+  "hasli-museum": {
+   "name": "Museum der Landschaft Hasli",
+   "tag": "Leben und Brauchtum im Tal",
+   "text": "Neben der Kirche erzählt das Regionalmuseum die Geschichte des Haslitals: Landwirtschaft und Handwerk, Brauchtum und die Menschen, die das Tal geprägt haben. Ein guter Einstieg, bevor Sie die Region erkunden.",
+   "hl": [
+    "Lokalgeschichte und Brauchtum",
+    "Altes Handwerk und Alltagsgegenstände",
+    "Führungen für Gruppen auf Anfrage"
+   ]
+  },
+  "climbing-hall": {
+   "name": "Kletterhalle Haslital",
+   "tag": "Klettern und Bouldern in Meiringen",
+   "text": "Die Kletterhalle Haslital bietet rund 730 Quadratmeter Kletterfläche und einen Boulderbereich, wenige Minuten vom Zentrum Meiringens. Ideal für Regentage oder als Training vor dem echten Fels.",
+   "hl": [
+    "730 m² Kletterfläche",
+    "Boulderbereich",
+    "Gute Wahl an Regentagen"
+   ]
+  },
+  "air-base": {
+   "name": "Militärflugplatz Meiringen",
+   "tag": "Jets zwischen den Bergen",
+   "text": "Der Flugplatz der Schweizer Luftwaffe liegt auf dem Talboden zwischen Feldern und Aare. Wenn F/A-18 Hornets auf der Piste 10/28 starten, hallt der Schall zwischen den Felswänden, und Flugbegeisterte versammeln sich rund um den Platz.",
+   "hl": [
+    "Kampfjets vor alpiner Kulisse",
+    "Flache Spazier- und Velowege rund um den Flugplatz",
+    "Flugtage vor dem Besuch prüfen"
+   ]
+  },
+  "maegisalp": {
+   "name": "Mägisalp",
+   "tag": "Mit der Gondel auf den Hasliberg",
+   "text": "Eine Luftseilbahn bringt Sie von Meiringen nach Reuti, Gondelbahnen fahren weiter über Bidmi zur Mägisalp auf rund 1700 Metern. Hier oben warten Bergrestaurants, Spielplätze und eine weite Sicht über das Tal. Im Winter liegt die Mägisalp mitten im Skigebiet Meiringen-Hasliberg.",
+   "hl": [
+    "Luftseilbahn und Gondeln direkt ab Meiringen",
+    "Start des Muggestutz-Zwergenwegs",
+    "Skigebiet im Winter"
+   ]
+  },
+  "planplatten": {
+   "name": "Planplatten",
+   "tag": "Gipfelsicht auf 2245 m",
+   "text": "Die Gondelbahn Eagle-Express fährt von der Mägisalp fast bis zum Gipfel des Planplatten. Vom Grat blicken Sie nach Süden über das Haslital zu den Engelhörnern und zur Wetterhorngruppe. Wanderwege führen über den Grat weiter Richtung Melchsee-Frutt.",
+   "hl": [
+    "Panorama der Berner Alpen",
+    "Gratwanderungen Richtung Melchsee-Frutt",
+    "Gondel fast bis zum Gipfel"
+   ]
+  },
+  "muggestutz": {
+   "name": "Muggestutz-Zwergenweg",
+   "tag": "Familienwege am Hasliberg",
+   "text": "Die Muggestutz-Wege folgen den Geschichten der Hasliberger Zwerge. Der bekannteste führt von der Mägisalp hinunter nach Bidmi, mit Zwergenhäuschen und Spielstationen am Weg. Ein zweiter Weg verbindet Käserstatt und Lischen.",
+   "hl": [
+    "Zwergenhäuschen und Spielstationen",
+    "Zwei Wege zwischen den Bahnstationen",
+    "Leichter Abstieg für kleine Beine"
+   ]
+  },
+  "kaeserstatt": {
+   "name": "Käserstatt",
+   "tag": "Sonnenterrasse über Wasserwendi",
+   "text": "Eine Gondelbahn fährt von Hasliberg Wasserwendi auf die Käserstatt, ein sonniges Plateau mit Bergrestaurants und Sicht bis zum Wetterhorn. Hier beginnen der zweite Muggestutz-Zwergenweg und leichte Panoramawanderungen, im Winter starten hier die Skifahrer.",
+   "hl": [
+    "Gondelbahn ab Hasliberg Wasserwendi",
+    "Muggestutz-Weg nach Lischen",
+    "Leichte Wanderungen mit Alpenblick"
+   ]
+  },
+  "bruenig-pass": {
+   "name": "Brünigpass",
+   "tag": "Tor zur Zentralschweiz",
+   "text": "Der niedrige Pass auf 1008 Metern verbindet das Haslital mit Lungern und Obwalden. Die Brünigbahn überwindet ihn auf Meterspur mit Zahnradabschnitten, und das seit 1888. Jeden Sommer findet auf dem Pass der Brünigschwinget statt, eines der klassischen Schwingfeste der Schweiz.",
+   "hl": [
+    "Historische Brünigbahn",
+    "Brünigschwinget",
+    "Wanderungen Richtung Lungern und Hasliberg"
+   ]
+  },
+  "rosenlaui-gorge": {
+   "name": "Gletscherschlucht Rosenlaui",
+   "tag": "Vom Gletscherwasser geformt",
+   "text": "Wuchtige Wasserfälle, romantische Grotten, bizarre Felsschliffe: Während Jahrtausenden hat das Schmelzwasser des Rosenlauigletschers diese Schlucht am Fuss der Engelhörner geformt, und es formt weiter. Wege, Galerien und kurze Tunnels führen durch die Gischt.",
+   "hl": [
+    "Wege und Tunnels durch die Schlucht",
+    "Wasserfälle aus dem Gletscher",
+    "Kombinierbar mit der Postautofahrt durchs Reichenbachtal"
+   ]
+  },
+  "hotel-rosenlaui": {
+   "name": "Hotel Rosenlaui",
+   "tag": "Ein historisches Berghotel",
+   "text": "Das historische Hotel Rosenlaui liegt am alten Weg von Meiringen über die Grosse Scheidegg nach Grindelwald. Restaurant und Terrasse sind ein schöner Halt zwischen Gletscherschlucht und den Wanderungen im Reichenbachtal.",
+   "hl": [
+    "Historisches Hotel in einem abgelegenen Tal",
+    "Restaurant und Terrasse",
+    "Am Weg zur Grossen Scheidegg"
+   ]
+  },
+  "schwarzwaldalp-sawmill": {
+   "name": "Säge Schwarzwaldalp",
+   "tag": "Eine alte Säge im Wald",
+   "text": "Auf der Schwarzwaldalp, am Ende der öffentlichen Strasse ab Meiringen, zeigt eine historische Säge, wie in den Bergen Holz geschnitten wurde. Das Chalet-Hotel nebenan und die Postauto-Haltestelle machen sie zu einem einfachen Halt auf dem Weg zur Grossen Scheidegg.",
+   "hl": [
+    "Historische Säge",
+    "Endstation der Postautolinie ab Meiringen",
+    "Wanderungen Richtung Grosse Scheidegg"
+   ]
+  },
+  "engelhorn-hut": {
+   "name": "Engelhornhütte",
+   "tag": "Berghütte unter den Kletterbergen",
+   "text": "Die Engelhornhütte liegt auf 1901 Metern unter den Kalktürmen der Engelhörner, einem klassischen Klettergebiet. Der Aufstieg ab Rosenlaui ist steil und lohnend, mit Blick über den Rosenlauigletscher und das Reichenbachtal.",
+   "hl": [
+    "Berghütte auf 1901 m",
+    "Ausgangspunkt zum Klettern in den Engelhörnern",
+    "Steiler Aufstieg ab Rosenlaui"
+   ]
+  },
+  "gelmerbahn": {
+   "name": "Gelmerbahn",
+   "tag": "Die steilste offene Standseilbahn Europas",
+   "text": "Mit einer Steigung von bis zu 106 Prozent ist die Gelmerbahn die steilste offene Standseilbahn Europas. Ratternd geht es während zwölf Minuten hinauf zum türkisfarbenen Gelmersee auf rund 1850 Metern. Pro Fahrt haben 24 Personen Platz, eine frühzeitige Online-Buchung wird dringend empfohlen.",
+   "hl": [
+    "Bis zu 106 % Steigung",
+    "Türkisfarbener Gelmersee",
+    "Hunde fahren zum Kinderpreis"
+   ]
+  },
+  "handeck-bridge": {
+   "name": "Handeckfallbrücke",
+   "tag": "70 Meter über dem Wasserfall",
+   "text": "Direkt bei der Talstation der Gelmerbahn überquert eine Hängeseilbrücke die Schlucht des Handeckfalls, 70 Meter über dem Wasser. Sie bietet einen spektakulären Blick direkt in den Wasserfall.",
+   "hl": [
+    "Hängeseilbrücke 70 m über der Schlucht",
+    "Blick in den Handeckfall",
+    "Gleich neben der Gelmerbahn"
+   ]
+  },
+  "grimsel-hospiz": {
+   "name": "Grimsel Hospiz",
+   "tag": "Historisches Hotel über dem Stausee",
+   "text": "Das Grimsel Hospiz thront auf einem Felsen über dem Grimselsee. 1932 war es das erste elektrisch beheizte Haus Europas, heute wird es mit der Abwärme der Wasserkraftwerke geheizt. Im Felsenkeller auf fast 2000 Metern lagern rund 300 Weine.",
+   "hl": [
+    "Historisches Hotel am Stausee",
+    "Weinkeller im Fels",
+    "Geheizt mit Abwärme aus Wasserkraft"
+   ]
+  },
+  "grimsel-pass": {
+   "name": "Grimselpass",
+   "tag": "2164 m zwischen Bern und Wallis",
+   "text": "Die Grimselstrasse steigt vorbei an Stauseen und blankem Granit auf 2164 Meter, wo der Totensee die Grenze zum Wallis markiert. Der Pass ist im Sommer geöffnet und ein beliebter Halt für Velofahrer, Motorradfahrer und Postautoreisende.",
+   "hl": [
+    "Hochalpiner Pass auf 2164 m",
+    "Totensee auf der Passhöhe",
+    "Granitlandschaft und Stauseen"
+   ]
+  },
+  "kristall-guttannen": {
+   "name": "kriSTALL Guttannen",
+   "tag": "Eintauchen in die Welt der Kristalle",
+   "text": "In einem alten Stall in Guttannen führt kriSTALL tief ins Innere der Berge, dorthin, wo Kristalle über Jahrmillionen in dunklen Klüften gewachsen sind. Statt langer Texttafeln erzählen Licht und Klang, wie Kristalle entstehen.",
+   "hl": [
+    "Kristallerlebnis in einem alten Stall",
+    "Licht und Klang statt Texttafeln",
+    "Rollstuhlgängig"
+   ]
+  },
+  "trift-bridge": {
+   "name": "Triftbrücke",
+   "tag": "Hängebrücke über dem Triftsee",
+   "text": "Die Triftbahn fährt in zehn Minuten aus dem Gadmental hinauf. Ab der Bergstation führt eine Wanderung von rund 1,5 Stunden zur Triftbrücke, einer der spektakulärsten Hängebrücken der Alpen, hoch über dem Triftsee und dem Triftgletscher.",
+   "hl": [
+    "Spektakuläre Hängebrücke",
+    "Kleine Seilbahn, Reservation empfohlen",
+    "Bergwanderung mit Blick auf den Triftgletscher"
+   ]
+  },
+  "taellibahn": {
+   "name": "Tällibahn & Klettersteig",
+   "tag": "Für Abenteuerlustige",
+   "text": "Die Tällibahn fährt von Gadmen auf rund 1730 Meter. Von dort bezwingen Familien mit Teenagern und Gruppen mit Helm und Karabiner den Tälli-Klettersteig. Hunde fahren gratis mit.",
+   "hl": [
+    "Seilbahn ab Gadmen",
+    "Tälli-Klettersteig",
+    "Hunde fahren gratis"
+   ]
+  },
+  "engstlensee": {
+   "name": "Engstlensee",
+   "tag": "Bergsee auf 1850 m",
+   "text": "Am Ende der Gentalstrasse liegt der Engstlensee, ein klarer Bergsee unter den Gipfeln der Titliskette. Das historische Berghotel Engstlenalp, ein Bootsverleih und leichte Uferwege machen ihn zu einem klassischen Sommerausflug aus dem Haslital.",
+   "hl": [
+    "Klarer Bergsee",
+    "Bootsverleih am See",
+    "Historisches Berghotel Engstlenalp"
+   ]
+  },
+  "ballenberg": {
+   "name": "Freilichtmuseum Ballenberg",
+   "tag": "Das ländliche Erbe der Schweiz",
+   "text": "Auf dem Ballenberg wurden über 100 historische Gebäude aus der ganzen Schweiz wieder aufgebaut, vom Bauernhaus bis zur Werkstatt, mit Gärten, Bauernhoftieren und Handwerkern bei der Arbeit. Planen Sie einen ganzen Tag ein: Das Gelände ist gross und am besten zu Fuss zu entdecken.",
+   "hl": [
+    "Historische Häuser aus der ganzen Schweiz",
+    "Bauernhoftiere und Gärten",
+    "Traditionelles Handwerk live"
+   ]
+  },
+  "via-alpina-scheidegg": {
+   "name": "Via Alpina: Meiringen – Grosse Scheidegg",
+   "tag": "Im Schatten des Wetterhorns",
+   "text": "Diese Etappe der Via Alpina, des Weitwanderwegs quer durch die Schweizer Alpen, steigt von Meiringen am Reichenbachfall vorbei ins stille Reichenbachtal. Über Rosenlaui und Schwarzwaldalp erreicht sie die Grosse Scheidegg unter der Nordwand des Wetterhorns. Entlang der Talstrasse fährt das Postauto, so lässt sich die Wanderung an vielen Haltestellen abkürzen.",
+   "hl": [
+    "Vorbei am Reichenbachfall und an Rosenlaui",
+    "Das Wetterhorn direkt über dem Pass",
+    "Postauto-Haltestellen unterwegs"
+   ]
+  },
+  "via-alpina-engstlenalp": {
+   "name": "Via Alpina: Engstlenalp – Meiringen",
+   "tag": "Vom See über den Hasliberg-Grat",
+   "text": "Vom Engstlensee steigt die Via Alpina über die Tannalp zum Panoramagrat rund um den Planplatten und führt dann über die Terrassen des Haslibergs hinunter nach Meiringen. Ein langer Tag mit grosser Aussicht; die Gondeln ab Mägisalp und Reuti ersparen Ihnen einen grossen Teil des Abstiegs.",
+   "hl": [
+    "Engstlensee und Tannalp",
+    "Gratwanderung beim Planplatten",
+    "Gondeln verkürzen den Abstieg"
+   ]
+  },
+  "viaberna-rosenlaui-reuti": {
+   "name": "ViaBerna: Rosenlaui – Hasliberg Reuti",
+   "tag": "Quer durchs Tal auf die Sonnenseite",
+   "text": "Diese Etappe der ViaBerna, die den ganzen Kanton Bern durchquert, führt von Rosenlaui durch die Wälder des Reichenbachtals hinunter auf den Talboden des Haslitals und steigt dann wieder hinauf nach Reuti auf der sonnigen Hasliberg-Terrasse.",
+   "hl": [
+    "Wälder des Reichenbachtals",
+    "Über die Aareebene",
+    "Ankunft auf der Hasliberg-Terrasse"
+   ]
+  },
+  "viaberna-reuti-engstlenalp": {
+   "name": "ViaBerna: Hasliberg Reuti – Engstlenalp",
+   "tag": "Über den Grat zum Engstlensee",
+   "text": "Eine lange Bergetappe: Von Reuti steigt der Weg an der Mägisalp vorbei zum Grat beim Planplatten und führt dann über hohe Alpweiden zur Engstlenalp und ihrem See. Mit den Gondeln bis zur Mägisalp sparen Sie sich den ersten Aufstieg.",
+   "hl": [
+    "Gondeln ersparen den ersten Aufstieg",
+    "Hohe Alpweiden mit weiter Sicht",
+    "Ziel am Engstlensee"
+   ]
+  },
+  "viaberna-engstlenalp-gadmen": {
+   "name": "ViaBerna: Engstlenalp – Gadmen",
+   "tag": "Hinunter ins wilde Gadmental",
+   "text": "Von der Engstlenalp steigt der Weg über einen hohen Sattel und führt dann in einem langen Abstieg ins Gadmental. Eine stille Etappe über abgelegene Alpweiden; ab Gadmen bringt Sie das Postauto zurück nach Innertkirchen.",
+   "hl": [
+    "Abgelegene Alpweiden",
+    "Langer Abstieg ins Gadmental",
+    "Postauto ab Gadmen"
+   ]
+  },
+  "four-lakes": {
+   "name": "Vier-Seen-Wanderung",
+   "tag": "Melchsee, Tannensee, Engstlensee, Trübsee",
+   "text": "Eine der klassischen Tageswanderungen der Zentralschweiz verbindet vier Bergseen. Von Melchsee-Frutt führt sie am Tannensee und am Engstlensee vorbei, steigt auf den Jochpass auf 2207 Metern und endet am Trübsee oberhalb von Engelberg.",
+   "hl": [
+    "Vier Bergseen an einem Tag",
+    "Jochpass auf 2207 m",
+    "Bergbahnen an beiden Enden"
+   ]
+  },
+  "planplatten-melchsee": {
+   "name": "Planplatten – Melchsee-Frutt",
+   "tag": "Gratwanderung mit Seenblick",
+   "text": "Ab der Bergstation des Eagle-Express folgt der Weg dem Grat über das Balmeregghorn und senkt sich dann nach Melchsee-Frutt und seinen Seen. Hinter Ihnen die Berner Alpen, vor Ihnen die sanfte Seenplatte Obwaldens.",
+   "hl": [
+    "Panoramagrat über das Balmeregghorn",
+    "Abstieg zum Melchsee",
+    "Mit der Gondel zum Start"
+   ]
+  },
+  "kaeserstatt-planplatten": {
+   "name": "Käserstatt – Planplatten",
+   "tag": "Vom Sonnenplateau auf den Grat",
+   "text": "Von der Käserstatt steigt der Weg gleichmässig über Hääggen zum Sattel unter dem Planplatten. Der Blick öffnet sich über das Haslital bis zum Wetterhorn und zu den Engelhörnern, oben bringt Sie die Gondel Eagle-Express hinunter zur Mägisalp.",
+   "hl": [
+    "Gleichmässiger Aufstieg mit freier Sicht",
+    "Panorama mit Wetterhorn und Engelhörnern",
+    "Mit der Gondel vom Planplatten zurück"
+   ]
+  },
+  "zwergenweg-lischen": {
+   "name": "Muggestutz-Weg Käserstatt – Lischen",
+   "tag": "Zwergenweg bergab für Familien",
+   "text": "Der zweite Muggestutz-Zwergenweg führt von der Käserstatt bergab nach Lischen, mit Zwergenhäuschen und Spielstationen am Weg. Ab Lischen fahren Sie mit der Gondel hinunter nach Wasserwendi.",
+   "hl": [
+    "Zwergenhäuschen und Spielstationen",
+    "Gemütlich bergab",
+    "Gondelbahn an beiden Enden"
+   ]
+  },
+  "gelmer-hut": {
+   "name": "Gelmersee – Gelmerhütte",
+   "tag": "Vom türkisfarbenen See in den Granit",
+   "text": "Ab der Bergstation der Gelmerbahn führt der Weg am Gelmersee entlang und steigt über Granitplatten zur Gelmerhütte. Eine lohnende Bergwanderung in reinem Grimselgranit, ideal kombiniert mit der Fahrt in der Standseilbahn.",
+   "hl": [
+    "Entlang des türkisfarbenen Gelmersees",
+    "Granitplatten und Bergbäche",
+    "Berghütte mit Aussicht"
+   ]
+  },
+  "windegg-hut": {
+   "name": "Underi Trift – Windegghütte",
+   "tag": "Kurzer Aufstieg, grosse Aussicht",
+   "text": "Ab der Bergstation der Triftbahn führt ein steiler, aber kurzer Bergweg zur Windegghütte. Von der Terrasse blicken Sie über das Triftgebiet bis zum Gletscher, und die Triftbrücke ist nicht weit.",
+   "hl": [
+    "Kurzer, steiler Bergweg",
+    "Hüttenterrasse mit Gletscherblick",
+    "Kombinierbar mit der Triftbahn"
+   ]
+  },
+  "trift-hut": {
+   "name": "Triftbrücke – Trifthütte",
+   "tag": "Alpinroute über dem Gletscher",
+   "text": "Hinter der Triftbrücke führt eine weiss-blau-weiss markierte Alpinroute hoch über dem Triftgletscher zur Trifthütte. Nur für erfahrene, trittsichere Berggängerinnen und Berggänger mit alpiner Ausrüstung und nur bei gutem Wetter.",
+   "hl": [
+    "Über die Triftbrücke",
+    "Hoch über dem Triftgletscher",
+    "Nur für alpin Erfahrene"
+   ]
+  },
+  "grimselsee-trail": {
+   "name": "Uferweg am Grimselsee",
+   "tag": "Am Stausee entlang Richtung Gletscher",
+   "text": "Ab dem Grimsel Hospiz folgt ein Bergweg dem Ufer des Grimselsees Richtung Unteraargletscher. Granitplatten, Wasserfälle und das milchig türkisfarbene Wasser machen ihn zu einer der schönsten Wanderungen an der Grimsel. Zurück auf dem gleichen Weg.",
+   "hl": [
+    "Granitplatten und Wasserfälle",
+    "Türkisfarbener Stausee auf der ganzen Strecke",
+    "Blick zum Unteraargletscher"
+   ]
+  },
+  "oberaar": {
+   "name": "Grimsel – Oberaarsee",
+   "tag": "Zum See unter dem Oberaargletscher",
+   "text": "Von der Grimsel steigt der Weg zum Oberaarsee am Fuss des Oberaargletschers. Bei der Staumauer bietet das Berghaus Oberaar Essen und Übernachtung in hochalpiner Umgebung.",
+   "hl": [
+    "Hochalpiner Stausee",
+    "Blick auf den Oberaargletscher",
+    "Berghaus Oberaar bei der Staumauer"
+   ]
+  },
+  "baechlital-hut": {
+   "name": "Räterichsboden – Bächlitalhütte",
+   "tag": "In ein verborgenes Granittal",
+   "text": "Von der Staumauer des Räterichsbodensees steigt der Weg steil ins Bächlital, ein stilles Tal aus Granit und Schmelzwasserbächen, und endet bei der SAC-Bächlitalhütte.",
+   "hl": [
+    "Steiler Aufstieg vom Stausee",
+    "Stilles Granittal",
+    "SAC-Hütte"
+   ]
+  },
+  "maegisalp-gummen": {
+   "name": "Mägisalp – Gummen – Bidmi",
+   "tag": "Gemütliche Panoramawanderung",
+   "text": "Eine leichte Wanderung von der Mägisalp über die Hasliberger Alpweiden via Gummen hinunter nach Bidmi, mit Blick über das Haslital auf der ganzen Strecke. Dank Gondeln an beiden Enden ein entspannter halber Tag.",
+   "hl": [
+    "Sanfter Weg über Alpweiden",
+    "Talblick auf der ganzen Strecke",
+    "Gondeln an beiden Enden"
+   ]
+  },
+  "bruenig-brienzwiler": {
+   "name": "Brünig – Brienzwiler",
+   "tag": "Hinunter zum Ballenberg",
+   "text": "Vom Brünigpass führt ein Bergweg durch Wald und Wiesen hinunter nach Brienzwiler, dem Dorf beim Freilichtmuseum Ballenberg. Ideal kombiniert mit einem Museumsbesuch.",
+   "hl": [
+    "Wald- und Wiesenwege",
+    "Blick Richtung Brienzersee",
+    "Ziel beim Freilichtmuseum Ballenberg"
+   ]
+  },
+  "reichenbachtal": {
+   "name": "Rosenlaui – Kaltenbrunnen",
+   "tag": "Leichte Wanderung durchs Reichenbachtal",
+   "text": "Eine gemütliche Wanderung talauswärts von Rosenlaui nach Kaltenbrunnen, durch Wald und Wiesen am Bach entlang, mit den Engelhörnern über Ihnen. Zurück mit dem Postauto.",
+   "hl": [
+    "Leicht und meist bergab",
+    "Am Reichenbach entlang",
+    "Mit dem Postauto zurück nach Meiringen"
+   ]
+  },
+  "scheidegg-schwarzwaldalp": {
+   "name": "Schwarzwaldalp – Grosse Scheidegg",
+   "tag": "Unter dem Wetterhorn",
+   "text": "Von der Schwarzwaldalp steigt ein Bergweg über Alpweiden zur Grossen Scheidegg, über Ihnen ragt das Wetterhorn auf. Ab der Passhöhe fahren Postautos hinunter nach Grindelwald und zurück nach Meiringen.",
+   "hl": [
+    "Wetterhorn-Nordwand aus der Nähe",
+    "Alpweiden und Kuhglocken",
+    "Postauto ab der Passhöhe"
+   ]
+  },
+  "engstlenalp-jochpass": {
+   "name": "Engstlenalp – Jochpass",
+   "tag": "Hinauf zum Pass über dem See",
+   "text": "Vom Engstlensee steigt der Weg auf den Jochpass auf 2207 Metern, den Übergang zum Trübsee und nach Engelberg. Beim Blick zurück liegt der See tiefblau unter den Gipfeln.",
+   "hl": [
+    "Gleichmässiger Aufstieg auf 2207 m",
+    "Rückblick auf den Engstlensee",
+    "Übergang zum Trübsee und nach Engelberg"
+   ]
+  }
+ }
+}

@@ -1,0 +1,833 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Interactive 3D map of the Haslital: Meiringen, Hasliberg, Grimsel, with places, hikes and filters in five languages.">
+<style>body{margin:0}[hidden]{display:none!important}</style>
+<title>Haslital 3D</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: full-bleed 3D valley. Left: filters and Swiss hiking signposts. Right: the page for the valley, a region or a place. Phones: one bottom sheet. */
+:root{
+  --paper: rgba(246,248,246,.94);
+  --paper-solid:#f5f7f5;
+  --ink:#16201c;
+  --muted:#55625c;
+  --line:rgba(22,32,28,.14);
+  --chip:rgba(22,32,28,.06);
+  --sign:#f6c700;
+  --sign-ink:#111;
+  --trail:#d4232b;
+  --pin:#16201c; --pin-ink:#fff;
+  --c-hiking:#b4521f; --c-nature:#1f8a8a; --c-gorges:#2f62c9; --c-views:#c77d00; --c-culture:#8a4fc4; --c-lifts:#d4232b; --c-active:#3b8a2f;
+  --sky-top:#8db8e0; --sky-mid:#cfe0ea; --sky-low:#e9efec; --haze:#dfe8ea;
+  --font-display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --font-body:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --shadow:0 10px 30px rgba(20,30,40,.18);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper: rgba(18,22,30,.9); --paper-solid:#141923; --ink:#ecefe9; --muted:#9aa4a8; --line:rgba(236,239,233,.14); --chip:rgba(236,239,233,.07);
+  --pin:#f2c400; --pin-ink:#111;
+  --c-hiking:#f08a5d; --c-nature:#4cc3c3; --c-gorges:#7aa2ff; --c-views:#f2b544; --c-culture:#c39bf0; --c-lifts:#ff6b6b; --c-active:#7ccf6c;
+  --sky-top:#0d1424; --sky-mid:#2c2f45; --sky-low:#7b5c55; --haze:#4d4652;
+  --shadow:0 10px 30px rgba(0,0,0,.45); color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --paper: rgba(18,22,30,.9); --paper-solid:#141923; --ink:#ecefe9; --muted:#9aa4a8; --line:rgba(236,239,233,.14); --chip:rgba(236,239,233,.07);
+  --pin:#f2c400; --pin-ink:#111;
+  --c-hiking:#f08a5d; --c-nature:#4cc3c3; --c-gorges:#7aa2ff; --c-views:#f2b544; --c-culture:#c39bf0; --c-lifts:#ff6b6b; --c-active:#7ccf6c;
+  --sky-top:#0d1424; --sky-mid:#2c2f45; --sky-low:#7b5c55; --haze:#4d4652;
+  --shadow:0 10px 30px rgba(0,0,0,.45); color-scheme:dark;
+}
+html,body{height:100%;overflow:hidden}
+body{background:var(--paper-solid);color:var(--ink);font-family:var(--font-body);font-size:15px;line-height:1.5}
+#sky{position:fixed;inset:0;background:linear-gradient(to bottom,var(--sky-top) 0%,var(--sky-mid) 55%,var(--sky-low) 100%)}
+#c{position:fixed;inset:0;width:100%;height:100%;display:block;touch-action:none;outline:none}
+#labels{position:fixed;inset:0;pointer-events:none;overflow:hidden}
+button,select{font:inherit;color:inherit}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--sign);outline-offset:2px}
+.panel{background:var(--paper);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-radius:4px;box-shadow:var(--shadow)}
+
+/* ---------- grid ---------- */
+#ui{position:fixed;inset:0;pointer-events:none;display:grid;gap:12px;
+  padding-top:max(14px,env(safe-area-inset-top,0px));padding-bottom:max(14px,env(safe-area-inset-bottom,0px));
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  grid-template-columns:minmax(0,320px) 1fr minmax(0,430px);grid-template-rows:auto minmax(0,1fr);
+  grid-template-areas:"top top top" "explore . page"}
+#ui>*{pointer-events:auto}
+.top{grid-area:top;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;pointer-events:none}
+.top>*{pointer-events:auto}
+.brand{padding:9px 14px 10px}
+.brand h1{margin:0;font-family:var(--font-display);font-stretch:125%;font-weight:800;font-size:24px;letter-spacing:.01em;line-height:1;text-transform:uppercase}
+.brand p{margin:5px 0 0;font-family:var(--font-mono);font-size:11px;color:var(--muted);letter-spacing:.03em}
+.tools{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;align-items:center}
+.tool{appearance:none;border:1px solid var(--line);background:var(--paper);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-radius:4px;padding:8px 12px;font-weight:600;font-size:13.5px;cursor:pointer;box-shadow:var(--shadow);display:inline-flex;align-items:center;gap:7px;min-height:38px}
+.tool:hover{border-color:var(--ink)}
+.tool[aria-pressed="true"]{background:var(--sign);color:var(--sign-ink);border-color:var(--sign)}
+.tool svg{width:14px;height:14px;flex:none}
+.langs{display:flex;background:var(--paper);border:1px solid var(--line);border-radius:4px;box-shadow:var(--shadow);overflow:hidden;min-height:38px}
+.langs button{appearance:none;border:0;background:none;padding:0 9px;font-family:var(--font-mono);font-size:12px;font-weight:500;cursor:pointer;text-transform:uppercase;letter-spacing:.04em}
+.langs button[aria-pressed="true"]{background:var(--ink);color:var(--paper-solid)}
+
+/* ---------- explore ---------- */
+.explore{grid-area:explore;display:flex;flex-direction:column;min-height:0;padding:12px 12px 6px;align-self:start;max-height:100%}
+.explore .mob-welcome{display:none}
+.fgroup{display:flex;flex-direction:column;gap:6px;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:10px}
+.flabel{font-family:var(--font-mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:5px}
+.chip{appearance:none;border:1px solid var(--line);background:var(--chip);border-radius:999px;padding:4px 10px;font-size:12.5px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:6px;line-height:1.3}
+.chip:hover{border-color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper-solid);border-color:var(--ink)}
+.chip svg{width:14px;height:14px;flex:none}
+.chip .dot{width:8px;height:8px;border-radius:2px;flex:none}
+.reshead{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin:0 0 6px}
+.reshead strong{font-family:var(--font-display);font-stretch:110%;font-size:15px}
+.linkbtn{appearance:none;border:0;background:none;padding:0;font-size:12.5px;color:var(--muted);text-decoration:underline;cursor:pointer}
+.list{overflow:auto;display:flex;flex-direction:column;gap:5px;padding:2px 14px 8px 0;min-height:0;scrollbar-width:thin}
+.sign{appearance:none;border:0;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:8px;
+  background:var(--sign);color:var(--sign-ink);text-align:left;padding:6px 24px 6px 9px;min-height:36px;
+  clip-path:polygon(0 0,calc(100% - 14px) 0,100% 50%,calc(100% - 14px) 100%,0 100%);
+  font-family:var(--font-display);font-stretch:88%;font-weight:700;font-size:14px;line-height:1.15;transition:transform .18s ease;flex-shrink:0}
+.sign:hover{transform:translateX(4px)}
+.sign[aria-current="true"]{transform:translateX(8px);background:var(--ink);color:var(--paper-solid)}
+.sign .km{font-family:var(--font-mono);font-weight:500;font-size:11px;font-stretch:100%;white-space:nowrap}
+.sign .dot{width:9px;height:9px;border-radius:2px;box-shadow:0 0 0 1.5px rgba(0,0,0,.35)}
+.empty{font-size:13.5px;color:var(--muted);padding:6px 0}
+
+/* ---------- page ---------- */
+.page{grid-area:page;align-self:start;max-height:100%;overflow:auto;padding:16px 20px 14px;min-width:0;scrollbar-width:thin}
+.pagehead{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:6px}
+.crumbs{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}
+.crumbs button{appearance:none;border:0;background:none;padding:0;cursor:pointer;text-decoration:underline;text-transform:inherit;letter-spacing:inherit;font:inherit;color:inherit}
+.x{appearance:none;border:1px solid var(--line);background:transparent;border-radius:3px;width:32px;height:32px;display:grid;place-items:center;cursor:pointer;flex:none}
+.x:hover{border-color:var(--ink)}
+.page h2{margin:4px 0 2px;font-family:var(--font-display);font-stretch:112%;font-weight:800;font-size:28px;line-height:1.05;text-wrap:balance}
+.tag{margin:0 0 12px;color:var(--muted);font-weight:600;font-size:14px}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 14px}
+.badge{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;padding:4px 9px;border-radius:3px;background:var(--chip);border:1px solid var(--line)}
+.badge svg{width:14px;height:14px}
+.badge.cat .dot{width:8px;height:8px;border-radius:2px}
+.page h3{margin:16px 0 6px;font-family:var(--font-mono);font-weight:500;font-size:11px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted)}
+.page p.body{margin:0;max-width:62ch}
+.hl{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:5px}
+.hl li{display:grid;grid-template-columns:14px 1fr;gap:8px;align-items:start}
+.hl li::before{content:"";width:8px;height:8px;margin-top:7px;background:var(--sign);box-shadow:0 0 0 1.5px var(--sign-ink);transform:rotate(45deg)}
+.facts{display:grid;grid-template-columns:auto 1fr;gap:5px 14px;margin:0;font-size:13.5px}
+.facts dt{color:var(--muted)}
+.facts dd{margin:0;text-align:right;font-variant-numeric:tabular-nums}
+.links{display:flex;flex-direction:column;gap:6px}
+.lnk{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:9px 12px;border:1px solid var(--line);border-radius:3px;text-decoration:none;font-weight:600;font-size:14px}
+.lnk:hover{border-color:var(--ink)}
+.lnk small{font-family:var(--font-mono);font-weight:400;font-size:11px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:50%}
+.lnk.primary{background:var(--ink);color:var(--paper-solid);border-color:var(--ink)}
+.lnk.primary small{color:inherit;opacity:.7}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.card{appearance:none;text-align:left;border:1px solid var(--line);background:var(--chip);border-radius:3px;padding:9px 10px;cursor:pointer;display:flex;flex-direction:column;gap:2px;min-width:0}
+.card:hover{border-color:var(--ink)}
+.card b{font-family:var(--font-display);font-stretch:95%;font-size:14px;line-height:1.2}
+.card span{font-size:12px;color:var(--muted);line-height:1.3}
+.card.wide{grid-column:1/-1;flex-direction:row;align-items:center;gap:10px}
+.card.wide .dot{width:9px;height:9px;border-radius:2px;flex:none}
+.card.wide div{display:flex;flex-direction:column;min-width:0}
+.pnav{display:flex;gap:8px;margin-top:16px;align-items:center}
+.pnav button{flex:1;appearance:none;border:1px solid var(--line);background:transparent;border-radius:3px;padding:8px 10px;cursor:pointer;font-weight:600;font-size:13.5px}
+.pnav button:hover{border-color:var(--ink)}
+.pnav span{font-family:var(--font-mono);font-size:11.5px;color:var(--muted);white-space:nowrap}
+.mk{display:inline-block;width:18px;height:9px;border-radius:1px;flex:none;box-shadow:0 0 0 1px rgba(0,0,0,.35)}
+.mk-hiking{width:10px;height:10px;background:#f6c700;transform:rotate(45deg);margin:0 4px}
+.mk-mountain{background:linear-gradient(90deg,#fff 0 33%,#d4232b 33% 67%,#fff 67%)}
+.mk-alpine{background:linear-gradient(90deg,#fff 0 33%,#2f62c9 33% 67%,#fff 67%)}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:3px;overflow:hidden}
+.stat{background:var(--paper-solid);padding:8px 10px;display:flex;flex-direction:column;gap:1px;min-width:0}
+.stat span{font-size:11.5px;color:var(--muted)}
+.stat b{font-family:var(--font-mono);font-weight:500;font-size:15px;font-variant-numeric:tabular-nums;display:flex;align-items:center;gap:6px;white-space:nowrap}
+.stat.wide{grid-column:span 3;flex-direction:row;justify-content:space-between;align-items:center}
+.stat.wide b{font-family:var(--font-body);font-size:13.5px;font-weight:600}
+.profile{width:100%;height:auto;display:block;margin-top:8px}
+.profile text{font-family:var(--font-mono);font-size:10px;fill:var(--muted)}
+.note{font-size:12px;color:var(--muted);margin:6px 0 0}
+.kicker{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted)}
+.hint{font-size:12.5px;color:var(--muted);margin:12px 0 0}
+.credit{margin:14px 0 0;font-size:10.5px;line-height:1.4;color:var(--muted)}
+
+/* ---------- labels ---------- */
+.pin{position:absolute;left:0;top:0;pointer-events:auto;appearance:none;border:0;background:none;padding:0;cursor:pointer;
+  display:flex;flex-direction:column;align-items:center;will-change:transform;transition:opacity .25s}
+.pin .lab{display:flex;align-items:center;gap:6px;background:var(--pin);color:var(--pin-ink);border-radius:3px;padding:4px 8px 4px 6px;
+  font-family:var(--font-display);font-stretch:90%;font-weight:700;font-size:12.5px;white-space:nowrap;box-shadow:0 3px 10px rgba(0,0,0,.25)}
+.pin .lab i{width:9px;height:9px;border-radius:2px;box-shadow:0 0 0 1.5px rgba(255,255,255,.7)}
+.pin .stem{width:2px;height:20px;background:var(--pin)}
+.pin .foot{width:8px;height:8px;border-radius:50%;background:var(--pin);margin-top:-3px;box-shadow:0 0 0 3px rgba(255,255,255,.55)}
+.pin.on .lab{background:var(--sign);color:var(--sign-ink)}
+.pin.on .stem{height:40px}
+.pin.compact .lab{padding:4px;gap:0;font-size:0}
+.pin.compact .stem{height:10px}
+.peak{position:absolute;left:0;top:0;font-family:var(--font-mono);font-size:11px;color:#fff;white-space:nowrap;
+  text-shadow:0 1px 2px rgba(0,0,0,.85),0 0 6px rgba(0,0,0,.5);transition:opacity .3s;pointer-events:none}
+.peak::before{content:"▲ ";font-size:8px}
+.peak span{opacity:.8}
+.rlabel{position:absolute;left:0;top:0;pointer-events:auto;appearance:none;border:0;background:none;cursor:pointer;padding:2px 4px;
+  font-family:var(--font-display);font-stretch:125%;font-weight:800;font-size:15px;letter-spacing:.14em;text-transform:uppercase;color:#fff;
+  text-shadow:0 1px 3px rgba(0,0,0,.9),0 0 12px rgba(0,0,0,.55);transition:opacity .3s;white-space:nowrap}
+.rlabel:hover{color:var(--sign)}
+
+/* ---------- loader ---------- */
+#loader{position:fixed;inset:0;display:grid;place-items:center;background:var(--paper-solid);z-index:5;transition:opacity .6s}
+#loader.done{opacity:0;pointer-events:none}
+.load-box{width:min(320px,80vw);font-family:var(--font-mono);font-size:12px;color:var(--muted)}
+.load-box strong{display:block;font-family:var(--font-display);font-stretch:125%;font-weight:800;font-size:22px;color:var(--ink);text-transform:uppercase;margin-bottom:10px}
+.bar{height:6px;background:var(--line);margin:10px 0 6px;overflow:hidden;border-radius:3px}
+.bar i{display:block;height:100%;width:0;background:var(--sign);transition:width .3s}
+#err{color:var(--trail)}
+
+/* ---------- phone ---------- */
+@media (max-width:960px){
+  #ui{grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr) auto;grid-template-areas:"top" "." "sheet";gap:8px}
+  .brand{padding:7px 10px}
+  .brand h1{font-size:18px}
+  .brand p{display:none}
+  .tool{padding:6px 9px;font-size:12.5px;min-height:34px}
+  .tool .tl{display:none}
+  .langs{min-height:34px}
+  .langs button{padding:0 6px;font-size:11px}
+  .explore,.page{grid-area:sheet;max-height:48vh;align-self:end}
+  body.expanded .explore, body.expanded .page{max-height:82vh}
+  body.has-page .explore{display:none}
+  body:not(.has-page) .page{display:none}
+  .explore{overflow:auto;padding:10px 12px 6px}
+  .explore .mob-welcome{display:block;margin:0 0 8px}
+  .explore .mob-welcome h2{margin:0;font-family:var(--font-display);font-stretch:112%;font-weight:800;font-size:20px;line-height:1.1}
+  .explore .mob-welcome p{margin:4px 0 0;font-size:13.5px;color:var(--muted)}
+  .list{overflow:visible;padding-right:14px}
+  .page{padding:12px 14px 12px}
+  .page h2{font-size:22px}
+  .cards{grid-template-columns:1fr}
+  .grab{display:flex;justify-content:center;margin:-4px 0 6px}
+  .grab button{appearance:none;border:0;background:none;padding:4px 20px;cursor:pointer}
+  .grab button i{display:block;width:40px;height:4px;border-radius:2px;background:var(--line)}
+}
+@media (min-width:961px){ .grab{display:none} }
+@media (prefers-reduced-motion: reduce){ .sign,.pin,#loader,.peak,.rlabel{transition:none} }
+</style>
+
+</head>
+<body>
+<div id="sky"></div>
+<canvas id="c" tabindex="0" aria-label="3D map of the Haslital"></canvas>
+<div id="labels"></div>
+
+<div id="ui">
+  <header class="top">
+    <div class="brand panel">
+      <h1>Haslital</h1>
+      <p id="t-brandSub">Meiringen · Hasliberg · Grimsel</p>
+    </div>
+    <div class="tools">
+      <div class="langs" id="langs" role="group" aria-label="Language"></div>
+      <button class="tool" id="b-overview" type="button">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M1 13 6 5l3 4 2-3 4 7z"/></svg><span class="tl" id="t-overview">Whole valley</span></button>
+      <button class="tool" id="b-tour" type="button" aria-pressed="false">
+        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 2.5v11l9-5.5z"/></svg><span class="tl" id="t-tour">Tour</span></button>
+    </div>
+  </header>
+
+  <section class="explore panel" id="explore" aria-label="Explore">
+    <div class="grab"><button type="button" class="b-expand" aria-label="Expand"><i></i></button></div>
+    <div class="mob-welcome"><h2 id="m-title"></h2><p id="m-text"></p></div>
+    <div class="fgroup"><span class="flabel" id="t-regions"></span><div class="chips" id="f-region"></div></div>
+    <div class="fgroup"><span class="flabel" id="t-categories"></span><div class="chips" id="f-cat"></div></div>
+    <div class="fgroup"><span class="flabel" id="t-filters"></span><div class="chips" id="f-feat"></div></div>
+    <div class="reshead"><strong id="r-count"></strong><button type="button" class="linkbtn" id="b-clear"></button></div>
+    <nav class="list" id="list" aria-label="Places"></nav>
+  </section>
+
+  <article class="page panel" id="page" aria-live="polite"></article>
+</div>
+
+<div id="loader" role="status">
+  <div class="load-box">
+    <strong>Haslital</strong>
+    <span id="l-text">Loading the Haslital</span>
+    <div class="bar"><i id="l-bar"></i></div>
+    <span id="err"></span>
+  </div>
+</div>
+
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+} }
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { Line2 } from 'three/addons/lines/Line2.js';
+import { LineMaterial } from 'three/addons/lines/LineMaterial.js';
+import { LineGeometry } from 'three/addons/lines/LineGeometry.js';
+
+const $ = s => document.querySelector(s);
+const LANGS = ['en','de','fr','it','es'];
+const STATION = { lon:8.18427, lat:46.72736 };
+const CATS = ['hiking','nature','gorges','views','culture','lifts','active'];
+const FEATS = ['wheelchair','dogs','family','indoor','free'];
+const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const rad = d => d*Math.PI/180;
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const ICON = {
+  wheelchair:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="7.5" cy="2.3" r="1.4" fill="currentColor" stroke="none"/><path d="M7 4.8v4.4h3.6l1.8 4"/><path d="M7 7h3"/><path d="M4.6 7.6a3.6 3.6 0 1 0 5.3 4.4"/></svg>',
+  dogs:'<svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><ellipse cx="8" cy="11" rx="3.3" ry="2.7"/><circle cx="3.3" cy="7.3" r="1.5"/><circle cx="12.7" cy="7.3" r="1.5"/><circle cx="6" cy="4" r="1.5"/><circle cx="10" cy="4" r="1.5"/></svg>',
+  family:'<svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><circle cx="5" cy="3" r="1.8"/><circle cx="11.5" cy="5.6" r="1.4"/><path d="M2.4 15V8.4A2.3 2.3 0 0 1 4.7 6h.6a2.3 2.3 0 0 1 2.3 2.4V15zM9.4 15v-4.6a1.6 1.6 0 0 1 1.6-1.6h1a1.6 1.6 0 0 1 1.6 1.6V15z"/></svg>',
+  indoor:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1.5 8.5a6.5 6.5 0 0 1 13 0z" fill="currentColor"/><path d="M8 8.5v4.6a1.6 1.6 0 0 1-3.2 0"/></svg>',
+  free:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 8.6 8.6 2H14v5.4L7.4 14z"/><circle cx="11" cy="5" r="1.1" fill="currentColor"/></svg>',
+  close:'<svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 3l10 10M13 3 3 13"/></svg>',
+  ext:'<svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 3H3v10h10v-3M9 2h5v5M14 2 7 9"/></svg>'
+};
+
+/* ---------------------------------------------------------------- language */
+let lang = (() => {
+  try { const s = localStorage.getItem('haslital-lang'); if (LANGS.includes(s)) return s; } catch {}
+  for (const l of (navigator.languages || [navigator.language || 'en'])) { const k = String(l).slice(0,2).toLowerCase(); if (LANGS.includes(k)) return k; }
+  return 'en';
+})();
+const textCache = {};
+const loadText = l => textCache[l] ||= fetch(`text-${l}.json`).then(r => { if (!r.ok) throw new Error('text'); return r.json(); });
+let T;
+const t = (k, vars) => { let s = T.ui[k] ?? k; if (vars) for (const [a,b] of Object.entries(vars)) s = s.replace(`{${a}}`, b); return s; };
+
+/* ---------------------------------------------------------------- loading */
+let done = 0; const TOTAL = 9;
+const tick = () => { done++; $('#l-bar').style.width = (done/TOTAL*100)+'%'; };
+const ok = r => { if (!r.ok) throw new Error(r.url+' '+r.status); return r; };
+const getJSON = u => fetch(u).then(ok).then(r => r.json()).then(v => (tick(), v));
+const getB64 = u => fetch(u).then(ok).then(r => r.text()).then(s => { const b = atob(s.replace(/\s+/g,'')), o = new Uint8Array(b.length); for (let i=0;i<b.length;i++) o[i] = b.charCodeAt(i); tick(); return o.buffer; });
+const getHeights = u => fetch(u).then(ok).then(r => r.blob()).then(b => createImageBitmap(b, { colorSpaceConversion:'none', premultiplyAlpha:'none' })).then(bm => {
+  const cv = document.createElement('canvas'); cv.width = bm.width; cv.height = bm.height;
+  const cx = cv.getContext('2d', { willReadFrequently:true }); cx.drawImage(bm, 0, 0);
+  const d = cx.getImageData(0, 0, bm.width, bm.height).data, out = new Float32Array(bm.width*bm.height);
+  for (let i=0;i<out.length;i++) out[i] = (d[i*4]*256 + d[i*4+1]) / 10 + 400;
+  tick(); return { w:bm.width, h:bm.height, data:out };
+});
+const texLoader = new THREE.TextureLoader();
+const getTex = u => texLoader.loadAsync(u).then(x => (tick(), x));
+
+let meta, DATA, ROUTES, terrain, bldBuf, treeBuf, ortho, detail;
+try {
+  T = await loadText(lang); tick();
+  $('#l-text').textContent = t('loading');
+  [meta, DATA, ROUTES, terrain, bldBuf, treeBuf, ortho, detail] = await Promise.all([
+    getJSON('meta.json'), getJSON('places.json'), getJSON('routes.json'), getHeights('terrain.png'), getB64('buildings.txt'), getB64('trees.txt'), getTex('ortho.jpg'), getTex('detail.jpg')]);
+} catch (e) { $('#err').textContent = (T ? t('loadError') : 'The map could not be loaded. Please reload the page.'); throw e; }
+
+/* ---------------------------------------------------------------- geo */
+const W = meta.W, H = meta.H, GW = terrain.w, GH = terrain.h, HT = terrain.data;
+function local(lon, lat){
+  const n = 2**15*256;
+  const x = (lon+180)/360*n, y = (1 - Math.asinh(Math.tan(rad(lat)))/Math.PI)/2*n;
+  return [(x - meta.X0 - meta.PW/2)*meta.RES, (y - meta.Y0 - meta.PH/2)*meta.RES];
+}
+function heightAt(x, z){
+  let gx = (x + W/2)/W*(GW-1), gz = (z + H/2)/H*(GH-1);
+  gx = Math.min(GW-1.001, Math.max(0, gx)); gz = Math.min(GH-1.001, Math.max(0, gz));
+  const x0 = gx|0, z0 = gz|0, tx = gx-x0, tz = gz-z0, i = z0*GW+x0;
+  return HT[i]*(1-tx)*(1-tz) + HT[i+1]*tx*(1-tz) + HT[i+GW]*(1-tx)*tz + HT[i+GW+1]*tx*tz;
+}
+function km(a, b){ const R=6371, dl=rad(b.lat-a.lat), dn=rad(b.lon-a.lon); const h=Math.sin(dl/2)**2+Math.cos(rad(a.lat))*Math.cos(rad(b.lat))*Math.sin(dn/2)**2; return 2*R*Math.asin(Math.sqrt(h)); }
+function lv95(lon, lat){
+  const p = (lat*3600 - 169028.66)/10000, l = (lon*3600 - 26782.5)/10000;
+  return [Math.round(2600072.37 + 211455.93*l - 10938.51*l*p - 0.36*l*p*p - 44.54*l*l*l),
+          Math.round(1200147.07 + 308807.95*p + 3745.25*l*l + 76.63*p*p - 194.56*l*l*p + 119.79*p*p*p)];
+}
+const PLACES = DATA.places, REGIONS = DATA.regions;
+const byId = {}; for (const p of PLACES){ byId[p.id] = p; [p.x, p.z] = local(p.lon, p.lat); p.h = heightAt(p.x, p.z); p.km = km(STATION, p);
+  const r = p.route && ROUTES[p.route];
+  if (r){ p.r = r; if (p.cats.includes('hiking') && !p.view){ [p.x, p.z] = r.start; p.h = heightAt(p.x, p.z); }
+    let x0=1e9,x1=-1e9,z0=1e9,z1=-1e9; for (const sg of r.segs) for (const [x,z] of sg){ x0=Math.min(x0,x); x1=Math.max(x1,x); z0=Math.min(z0,z); z1=Math.max(z1,z); }
+    r.cx = (x0+x1)/2; r.cz = (z0+z1)/2; r.ext = Math.max(x1-x0, z1-z0); } }
+const regionById = {}; for (const r of REGIONS){ regionById[r.id] = r; const ps = PLACES.filter(p => p.region === r.id); r.places = ps;
+  r.x = ps.reduce((a,p)=>a+p.x,0)/ps.length; r.z = ps.reduce((a,p)=>a+p.z,0)/ps.length;
+  r.ext = Math.max(800, ...ps.map(p => Math.hypot(p.x-r.x, p.z-r.z))); }
+
+/* ---------------------------------------------------------------- renderer */
+const canvas = $('#c');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias:true, alpha:true, logarithmicDepthBuffer:true });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.setClearColor(0x000000, 0);
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(42, 1, 5, 220000);
+const controls = new OrbitControls(camera, canvas);
+controls.enableDamping = true; controls.dampingFactor = 0.08; controls.screenSpacePanning = false;
+controls.maxPolarAngle = rad(84); controls.minDistance = 60; controls.maxDistance = 48000;
+const maxAniso = renderer.capabilities.getMaxAnisotropy();
+for (const x of [ortho, detail]){ x.colorSpace = THREE.SRGBColorSpace; x.anisotropy = maxAniso; }
+
+const hemi = new THREE.HemisphereLight(0xffffff, 0x4a4030, 1.5), sun = new THREE.DirectionalLight(0xfff4e2, 1.5);
+scene.add(hemi, sun); scene.fog = new THREE.Fog(0xdfe8ea, 40000, 120000);
+function applyTheme(){
+  const cs = getComputedStyle(document.documentElement);
+  scene.fog.color.set(cs.getPropertyValue('--haze').trim() || '#dfe8ea');
+  if (cs.getPropertyValue('color-scheme').includes('dark')){ hemi.color.set(0xa7b0d8); hemi.groundColor.set(0x3a2a22); hemi.intensity = 1.0; sun.color.set(0xffa765); sun.intensity = 1.9; sun.position.set(-0.85, 0.32, 0.25); }
+  else { hemi.color.set(0xf4f8ff); hemi.groundColor.set(0x51463a); hemi.intensity = 1.75; sun.color.set(0xfff4e2); sun.intensity = 1.25; sun.position.set(0.45, 0.85, 0.55); }
+}
+applyTheme();
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change', applyTheme);
+new MutationObserver(applyTheme).observe(document.documentElement, { attributes:true, attributeFilter:['data-theme'] });
+
+/* ground: one mesh per tile, coloured from world position so the sharp tile image can be swapped in later */
+const detailRect = new THREE.Vector4(...meta.detail);
+function groundMaterial(){
+  const u = { mapRect:{ value:new THREE.Vector4(-W/2, -H/2, W/2, H/2) }, detailMap:{ value:detail }, detailRect:{ value:detailRect } };
+  const m = new THREE.MeshLambertMaterial({ map: ortho, side: THREE.DoubleSide });
+  m.onBeforeCompile = sh => {
+    Object.assign(sh.uniforms, u);
+    sh.vertexShader = 'varying vec2 vWXZ;\n' + sh.vertexShader.replace('#include <begin_vertex>', '#include <begin_vertex>\nvWXZ = position.xz;');
+    sh.fragmentShader = 'varying vec2 vWXZ;\nuniform vec4 mapRect;\nuniform sampler2D detailMap;\nuniform vec4 detailRect;\n' + sh.fragmentShader.replace('#include <map_fragment>', `
+      vec2 muv = (vWXZ - mapRect.xy) / (mapRect.zw - mapRect.xy); muv.y = 1.0 - muv.y;
+      vec4 sampledDiffuseColor = texture2D(map, muv);
+      vec2 duv = (vWXZ - detailRect.xy) / (detailRect.zw - detailRect.xy); duv.y = 1.0 - duv.y;
+      if (duv.x > 0.0 && duv.x < 1.0 && duv.y > 0.0 && duv.y < 1.0) {
+        float e = min(min(duv.x, 1.0 - duv.x), min(duv.y, 1.0 - duv.y));
+        sampledDiffuseColor = mix(sampledDiffuseColor, texture2D(detailMap, duv), smoothstep(0.0, 0.05, e));
+      }
+      diffuseColor *= sampledDiffuseColor;`);
+  };
+  m.userData.u = u;
+  return m;
+}
+const tiles = meta.tiles.map(tl => {
+  const [c0, c1] = tl.c, [r0, r1] = tl.r, nx = c1-c0+1, nz = r1-r0+1;
+  const pos = new Float32Array(nx*nz*3), idx = [];
+  for (let r=0;r<nz;r++) for (let c=0;c<nx;c++){ const gi = (r0+r)*GW + (c0+c), k = (r*nx+c)*3;
+    pos[k] = -W/2 + (c0+c)/(GW-1)*W; pos[k+1] = HT[gi]; pos[k+2] = -H/2 + (r0+r)/(GH-1)*H; }
+  for (let r=0;r<nz-1;r++) for (let c=0;c<nx-1;c++){ const a = r*nx+c, b = a+1, d = a+nx, e = d+1; idx.push(a,d,b, b,d,e); }
+  const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.BufferAttribute(pos,3)); g.setIndex(idx); g.computeVertexNormals();
+  const mat = groundMaterial(); const mesh = new THREE.Mesh(g, mat); scene.add(mesh);
+  return { ...tl, mat, mesh, x0:-W/2 + c0/(GW-1)*W, x1:-W/2 + c1/(GW-1)*W, z0:-H/2 + r0/(GH-1)*H, z1:-H/2 + r1/(GH-1)*H, hi:0, trees:[] };
+});
+function tileAt(x, z){ return tiles.find(tl => x >= tl.x0 && x <= tl.x1 && z >= tl.z0 && z <= tl.z1) || tiles[0]; }
+function loadHi(tl){
+  tl.hi = 1;
+  texLoader.load(`tile-${tl.i}-${tl.j}.jpg`, tex => { tex.colorSpace = THREE.SRGBColorSpace; tex.anisotropy = maxAniso;
+    tl.mat.map = tex; tl.mat.userData.u.mapRect.value.set(...tl.rect); tl.hi = 2; }, undefined, () => { tl.hi = 0; });
+}
+
+/* diorama sides */
+{
+  const BASE = 250, pos = [], col = [], top = new THREE.Color(0x6e5a45), bot = new THREE.Color(0x2b241e);
+  const edge = pts => { for (let i=0;i<pts.length-1;i++){ const [ax,az]=pts[i], [bx,bz]=pts[i+1], ha=heightAt(ax,az), hb=heightAt(bx,bz);
+    pos.push(ax,ha,az, ax,BASE,az, bx,BASE,bz, ax,ha,az, bx,BASE,bz, bx,hb,bz);
+    col.push(...top.toArray(), ...bot.toArray(), ...bot.toArray(), ...top.toArray(), ...bot.toArray(), ...top.toArray()); } };
+  const N = 300, w = W/2-0.01, h = H/2-0.01, line = (x0,z0,x1,z1) => Array.from({length:N+1}, (_,i) => [x0+(x1-x0)*i/N, z0+(z1-z0)*i/N]);
+  edge(line(-w,h,w,h)); edge(line(w,h,w,-h)); edge(line(w,-h,-w,-h)); edge(line(-w,-h,-w,h));
+  const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.Float32BufferAttribute(pos,3)); g.setAttribute('color', new THREE.Float32BufferAttribute(col,3)); g.computeVertexNormals();
+  scene.add(new THREE.Mesh(g, new THREE.MeshLambertMaterial({ vertexColors:true, side:THREE.DoubleSide })));
+  const bottom = new THREE.Mesh(new THREE.PlaneGeometry(W, H), new THREE.MeshBasicMaterial({ color:0x221c17 })); bottom.rotation.x = Math.PI/2; bottom.position.y = BASE; scene.add(bottom);
+}
+
+/* buildings: walls in one mesh, roofs per tile so they share the tile's aerial image */
+let seed = 12345; const rnd = () => (seed = (seed*16807) % 2147483647) / 2147483647;
+{
+  const a = new Int16Array(bldBuf), wp = [], wc = [], roofs = tiles.map(() => []);
+  const plaster = new THREE.Color(0xe9e3d6), wood = new THREE.Color(0x7d5131), c = new THREE.Color(), cd = new THREE.Color();
+  const wall = (ax,az,bx,bz,yb,yt) => { wp.push(ax,yb,az, bx,yb,bz, bx,yt,bz, ax,yb,az, bx,yt,bz, ax,yt,az); const lo = cd.toArray(), hi = c.toArray(); wc.push(...lo,...lo,...hi, ...lo,...hi,...hi); };
+  const gtri = (p,q,r) => { for (const v of [p,q,r]) wp.push(...v); const hi = c.toArray(); wc.push(...hi,...hi,...hi); };
+  let i = 0;
+  while (i < a.length){
+    const n = a[i], h = a[i+1]/2, P = [];
+    for (let k=0;k<n;k++) P.push([a[i+2+2*k]/2, a[i+3+2*k]/2]);
+    i += 2 + 2*n;
+    let mn = 1e9, mx = -1e9; for (const [x,z] of P){ const g = heightAt(x,z); if (g<mn) mn=g; if (g>mx) mx=g; }
+    const base = mn - 2, top = mx + h, R = roofs[tiles.indexOf(tileAt(P[0][0], P[0][1]))];
+    const tri = (p,q,r) => R.push(...p, ...q, ...r);
+    c.copy(rnd() < 0.42 ? wood : plaster).offsetHSL(0, 0, (rnd()-0.5)*0.06); cd.copy(c).multiplyScalar(0.62);
+    for (let k=0;k<n;k++){ const [ax,az] = P[k], [bx,bz] = P[(k+1)%n]; wall(ax,az,bx,bz,base,top); }
+    const L = (p,q) => Math.hypot(p[0]-q[0], p[1]-q[1]);
+    if (n === 4 && h < 25){
+      let Q = P; if (L(P[0],P[1]) < L(P[1],P[2])) Q = [P[1],P[2],P[3],P[0]];
+      const rh = top + Math.min(L(Q[1],Q[2])*0.33, 7), m = (p,q) => [(p[0]+q[0])/2, rh, (p[1]+q[1])/2], v = p => [p[0], top, p[1]];
+      const r1 = m(Q[1],Q[2]), r2 = m(Q[3],Q[0]);
+      tri(v(Q[0]), v(Q[1]), r1); tri(v(Q[0]), r1, r2); tri(v(Q[2]), v(Q[3]), r2); tri(v(Q[2]), r2, r1);
+      gtri(v(Q[1]), v(Q[2]), r1); gtri(v(Q[3]), v(Q[0]), r2);
+    } else {
+      for (const f of THREE.ShapeUtils.triangulateShape(P.map(([x,z]) => new THREE.Vector2(x,z)), [])) tri([P[f[0]][0],top,P[f[0]][1]], [P[f[1]][0],top,P[f[1]][1]], [P[f[2]][0],top,P[f[2]][1]]);
+    }
+  }
+  const wg = new THREE.BufferGeometry(); wg.setAttribute('position', new THREE.Float32BufferAttribute(wp,3)); wg.setAttribute('color', new THREE.Float32BufferAttribute(wc,3)); wg.computeVertexNormals();
+  scene.add(new THREE.Mesh(wg, new THREE.MeshLambertMaterial({ vertexColors:true, side:THREE.DoubleSide })));
+  roofs.forEach((arr, k) => { if (!arr.length) return; const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.Float32BufferAttribute(arr,3)); g.computeVertexNormals(); scene.add(new THREE.Mesh(g, tiles[k].mat)); });
+}
+
+/* trees: per tile so far-away forests can be switched off */
+{
+  const t16 = new Int16Array(treeBuf), n = t16.length/3, groups = tiles.map(() => ({ c:[], d:[] }));
+  for (let i=0;i<n;i++){ const x = t16[3*i]/2, z = t16[3*i+1]/2, s = (t16[3*i+2]&255)/255, y = heightAt(x,z) - 1;
+    groups[tiles.indexOf(tileAt(x,z))][(y < 1150 && s < 0.35) ? 'd' : 'c'].push(x, y, z, s); }
+  const cone = new THREE.ConeGeometry(1, 1, 6, 1); cone.translate(0, 0.5, 0);
+  const blob = new THREE.IcosahedronGeometry(1, 0); blob.translate(0, 1, 0);
+  const matC = new THREE.MeshLambertMaterial({ color:0xffffff }), matD = new THREE.MeshLambertMaterial({ color:0xffffff, flatShading:true });
+  const M = new THREE.Matrix4(), S = new THREE.Vector3(), P = new THREE.Vector3(), Q = new THREE.Quaternion(), col = new THREE.Color();
+  groups.forEach((g, k) => {
+    for (const kind of ['c','d']){
+      const arr = g[kind], cnt = arr.length/4; if (!cnt) continue;
+      const im = new THREE.InstancedMesh(kind === 'c' ? cone : blob, kind === 'c' ? matC : matD, cnt);
+      for (let i=0;i<cnt;i++){ const x = arr[4*i], y = arr[4*i+1], z = arr[4*i+2], s = arr[4*i+3]; P.set(x,y,z);
+        if (kind === 'd'){ const r = 3.2 + s*3; S.set(r, r*1.05, r); Q.identity(); col.setHSL(0.24 + s*0.04, 0.38, 0.17 + s*0.06); }
+        else { const hh = 9 + s*11; S.set(hh*0.26, hh, hh*0.26); Q.setFromAxisAngle(THREE.Object3D.DEFAULT_UP, s*6.28); col.setHSL(0.30 + s*0.05, 0.34, 0.11 + s*0.05); }
+        M.compose(P, Q, S); im.setMatrixAt(i, M); im.setColorAt(i, col); }
+      im.instanceMatrix.needsUpdate = true; im.instanceColor.needsUpdate = true; im.computeBoundingSphere(); im.visible = false;
+      scene.add(im); tiles[k].trees.push(im);
+    }
+  });
+}
+
+/* lifts and funiculars */
+const cabins = [];
+{
+  const cableMat = new THREE.LineBasicMaterial({ color:0x1d1d1d, transparent:true, opacity:0.85 });
+  const railMat = new THREE.LineBasicMaterial({ color:0x2b2b2b });
+  const pylonMat = new THREE.MeshLambertMaterial({ color:0x8a8f94 });
+  const gondolaGeo = new THREE.BoxGeometry(3.2, 3, 3.2); gondolaGeo.translate(0, -2.2, 0);
+  const carGeo = new THREE.BoxGeometry(7, 4.4, 4.2); carGeo.translate(0, -3, 0);
+  const funGeo = new THREE.BoxGeometry(3, 2.6, 7); funGeo.translate(0, 1.5, 0);
+  const red = new THREE.MeshLambertMaterial({ color:0xd4232b }), yellow = new THREE.MeshLambertMaterial({ color:0xf6c700 });
+  const pylonGeo = new THREE.BoxGeometry(1.4, 1, 1.4); pylonGeo.translate(0, 0.5, 0);
+  for (const a of meta.aerial){
+    if (!a.p.every(([x,z]) => Math.abs(x) < W/2-20 && Math.abs(z) < H/2-20)) continue;
+    const fun = a.k === 'funicular', pts = [];
+    const nodes = a.p.map(([x,z], i) => { const g = heightAt(x,z); return { x, z, g, y: g + (fun ? 2 : (i===0 || i===a.p.length-1 ? 9 : 16)) }; });
+    for (let i=0;i<nodes.length-1;i++){
+      const A = nodes[i], B = nodes[i+1], len = Math.hypot(B.x-A.x, B.z-A.z), steps = Math.max(2, Math.ceil(len/(fun ? 10 : 25)));
+      for (let k=0;k<steps;k++){ const s = k/steps, x = A.x+(B.x-A.x)*s, z = A.z+(B.z-A.z)*s;
+        let y = fun ? heightAt(x,z) + 2 : A.y+(B.y-A.y)*s - len*0.035*4*s*(1-s); if (!fun) y = Math.max(y, heightAt(x,z) + 5); pts.push(new THREE.Vector3(x,y,z)); }
+      if (!fun && i>0){ const p = new THREE.Mesh(pylonGeo, pylonMat); p.position.set(A.x, A.g-1, A.z); p.scale.y = A.y - A.g + 1; scene.add(p); }
+    }
+    const last = nodes[nodes.length-1]; pts.push(new THREE.Vector3(last.x, last.y, last.z));
+    scene.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), fun ? railMat : cableMat));
+    const cum = [0]; for (let i=1;i<pts.length;i++) cum.push(cum[i-1] + pts[i].distanceTo(pts[i-1]));
+    const total = cum[cum.length-1];
+    if (a.k === 'gondola'){ const count = Math.max(2, Math.floor(total/140)); for (let k=0;k<count;k++){ const m = new THREE.Mesh(gondolaGeo, red); scene.add(m); cabins.push({ m, pts, cum, total, off:k/count, speed:5, loop:true }); } }
+    else if (a.k === 'cable_car' || fun){ const m = new THREE.Mesh(fun ? funGeo : carGeo, yellow); scene.add(m); cabins.push({ m, pts, cum, total, speed: fun ? 3 : 8, loop:false }); }
+  }
+}
+function placeCabin(c, time){
+  let s;
+  if (c.loop) s = ((time*c.speed/c.total + c.off) % 1) * c.total;
+  else { const ph = (time*c.speed/(c.total*1.25)) % 2, u = Math.min(1, Math.max(0, (ph < 1 ? ph : 2-ph)*1.25 - 0.125)); s = (0.5 - 0.5*Math.cos(u*Math.PI)) * c.total; }
+  let lo = 0, hi = c.cum.length-1; while (hi-lo > 1){ const mid = (lo+hi)>>1; if (c.cum[mid] < s) lo = mid; else hi = mid; }
+  const f = (s - c.cum[lo]) / Math.max(1e-6, c.cum[hi]-c.cum[lo]);
+  c.m.position.lerpVectors(c.pts[lo], c.pts[hi], f);
+  c.m.rotation.y = Math.atan2(c.pts[hi].x - c.pts[lo].x, c.pts[hi].z - c.pts[lo].z);
+}
+
+/* ---------------------------------------------------------------- state */
+const state = { region:'all', cat:'all', feat:new Set(), page:null };
+const matches = p => (state.region === 'all' || p.region === state.region) && (state.cat === 'all' || p.cats.includes(state.cat)) &&
+  [...state.feat].every(f => f === 'wheelchair' ? (p.wheelchair === 'yes' || p.wheelchair === 'partly') : p[f] === true);
+const sorted = list => [...list].sort((a,b) => a.km - b.km);
+const filtered = () => sorted(PLACES.filter(matches));
+const pn = p => T.places[p.id].name;
+const catDot = c => `<i class="dot" style="background:var(--c-${c})"></i>`;
+const num1 = v => v.toLocaleString(lang, { minimumFractionDigits:1, maximumFractionDigits:1 });
+const kmText = p => p.km < 0.5 ? t('here') : `${num1(p.km)} km`;
+
+/* ---------------------------------------------------------------- explore panel */
+function chip(label, pressed, attrs, inner = ''){ return `<button type="button" class="chip" aria-pressed="${pressed}" ${attrs}>${inner}${esc(label)}</button>`; }
+function renderExplore(){
+  $('#m-title').textContent = t('welcomeTitle'); $('#m-text').textContent = t('hint');
+  $('#t-regions').textContent = t('regions'); $('#t-categories').textContent = t('categories'); $('#t-filters').textContent = t('filters');
+  $('#f-region').innerHTML = chip(t('allRegions'), state.region === 'all', 'data-region="all"') + REGIONS.map(r => chip(T.regions[r.id].name, state.region === r.id, `data-region="${r.id}"`)).join('');
+  $('#f-cat').innerHTML = chip(t('allCats'), state.cat === 'all', 'data-cat="all"') + CATS.map(c => chip(T.cats[c], state.cat === c, `data-cat="${c}"`, catDot(c))).join('');
+  $('#f-feat').innerHTML = FEATS.map(f => chip(t('f_'+f), state.feat.has(f), `data-feat="${f}"`, ICON[f])).join('');
+  const list = filtered();
+  $('#r-count').textContent = list.length === 1 ? t('result1') : t('results', { n:list.length });
+  const b = $('#b-clear'); b.textContent = t('clear'); b.hidden = state.region === 'all' && state.cat === 'all' && !state.feat.size;
+  $('#list').innerHTML = list.length ? list.map(p => `<button type="button" class="sign" data-place="${p.id}" aria-current="${state.page === p.id}">${p.r && p.cats[0] === 'hiking' ? `<i class="mk mk-${p.r.diff}"></i>` : catDot(p.cats[0])}<span>${esc(pn(p))}</span><span class="km">${kmText(p)}</span></button>`).join('')
+    : `<p class="empty">${esc(t('noResults'))}</p>`;
+  updatePins();
+}
+$('#explore').addEventListener('click', e => {
+  const el = e.target.closest('button'); if (!el) return;
+  if (el.dataset.region){ const r = el.dataset.region; stopTour(); go(r === 'all' ? '' : r); }
+  else if (el.dataset.cat){ state.cat = el.dataset.cat; renderExplore(); renderPage(); }
+  else if (el.dataset.feat){ const f = el.dataset.feat; state.feat.has(f) ? state.feat.delete(f) : state.feat.add(f); renderExplore(); renderPage(); }
+  else if (el.dataset.place){ stopTour(); go(el.dataset.place); }
+  else if (el.id === 'b-clear'){ state.cat = 'all'; state.feat.clear(); if (state.region !== 'all'){ state.region = 'all'; go(''); } else { renderExplore(); renderPage(); } }
+});
+
+/* ---------------------------------------------------------------- page panel */
+function badge(icon, text){ return `<span class="badge">${icon}${esc(text)}</span>`; }
+function linkRow(label, url, primary){ let host = ''; try { host = new URL(url).hostname.replace(/^www\./,''); } catch {}
+  return `<a class="lnk${primary ? ' primary' : ''}" href="${esc(url)}" target="_blank" rel="noopener"><span>${esc(label)}</span><small>${esc(host)} ${ICON.ext}</small></a>`; }
+const regionWeb = r => r.web[lang] || r.web.en;
+function placeCard(p, wide){
+  return `<button type="button" class="card${wide ? ' wide' : ''}" data-place="${p.id}">${wide ? catDot(p.cats[0]) + '<div>' : ''}<b>${esc(pn(p))}</b><span>${esc(T.places[p.id].tag)}</span>${wide ? '</div>' : ''}</button>`;
+}
+const hm = m => `${Math.floor(m/60)} h${m%60 ? ' ' + (m%60) + ' min' : ''}`;
+function routeBlock(r){
+  const n = v => v.toLocaleString(lang), pr = r.profile, lo = Math.min(...pr), hi = Math.max(...pr), Wd = 360, Hd = 90;
+  const pts = pr.map((e,i) => `${(i/(pr.length-1)*Wd).toFixed(1)},${(8 + (hi-e)/Math.max(1,hi-lo)*(Hd-20)).toFixed(1)}`).join(' ');
+  return `<h3>${esc(t('route'))}</h3><div class="stats">
+    <div class="stat"><span>${esc(t('distance'))}</span><b>${num1(r.km)} km</b></div>
+    <div class="stat"><span>${esc(t('hikeTime'))}</span><b>${hm(r.min_t)}</b></div>
+    <div class="stat"><span>${esc(t('highest'))}</span><b>${n(r.max)} m</b></div>
+    <div class="stat"><span>${esc(t('ascent'))}</span><b>↗ ${n(r.up)} m</b></div>
+    <div class="stat"><span>${esc(t('descent'))}</span><b>↘ ${n(r.down)} m</b></div>
+    <div class="stat"><span>${esc(t('season'))}</span><b>${esc(t('s_summer'))}</b></div>
+    <div class="stat wide"><span>${esc(t('difficulty'))}</span><b><i class="mk mk-${r.diff}"></i>${esc(t('diff_'+r.diff))}</b></div></div>
+    <svg class="profile" viewBox="0 0 ${Wd} ${Hd}" role="img" aria-label="${esc(t('profile'))}"><polygon points="0,${Hd-12} ${pts} ${Wd},${Hd-12}" fill="var(--sign)" fill-opacity=".35"/><polyline points="${pts}" fill="none" stroke="var(--ink)" stroke-width="1.6"/><text x="2" y="${Hd-1}">0 km</text><text x="${Wd-2}" y="${Hd-1}" text-anchor="end">${num1(r.km)} km</text><text x="${Wd-2}" y="10" text-anchor="end">${n(hi)} m</text></svg>
+    <p class="note">${esc(t('timeNote'))}</p>`;
+}
+const grab = `<div class="grab"><button type="button" class="b-expand" aria-label="Expand"><i></i></button></div>`;
+function renderPage(){
+  const el = $('#page'), id = state.page;
+  document.body.classList.toggle('has-page', !!id);
+  if (!id){
+    el.innerHTML = `<div class="kicker">${esc(t('welcomeKicker'))}</div><h2>${esc(t('welcomeTitle'))}</h2>
+      <p class="body">${esc(t('welcomeText'))}</p>
+      <h3>${esc(t('regions'))}</h3>
+      <div class="cards">${REGIONS.map(r => `<button type="button" class="card" data-region="${r.id}"><b>${esc(T.regions[r.id].name)}</b><span>${esc(r.places.length === 1 ? t('result1') : t('results', { n:r.places.length }))}</span></button>`).join('')}</div>
+      <p class="hint">${esc(t('hint'))}</p>
+      <p class="credit">${esc(t('credit'))}</p>`;
+    return;
+  }
+  const close = `<button type="button" class="x" data-close aria-label="${esc(t('close'))}">${ICON.close}</button>`;
+  const r = regionById[id];
+  if (r){
+    const web = regionWeb(r);
+    el.innerHTML = `${grab}<div class="pagehead"><span class="kicker">${esc(t('regions'))}</span>${close}</div>
+      <h2>${esc(T.regions[id].name)}</h2>
+      <p class="tag">${esc(r.places.length === 1 ? t('result1') : t('results', { n:r.places.length }))}</p>
+      <p class="body">${esc(T.regions[id].intro)}</p>
+      <h3>${esc(t('inRegion'))}</h3>
+      <div class="cards">${sorted(r.places).map(p => placeCard(p, true)).join('')}</div>
+      ${web ? `<h3>${esc(t('links'))}</h3><div class="links">${linkRow(t('l_regionPage', { region:T.regions[id].name }), web, true)}</div>` : ''}
+      <p class="credit">${esc(t('credit'))}</p>`;
+    return;
+  }
+  const p = byId[id], tx = T.places[id], reg = regionById[p.region];
+  const b = p.cats.map(c => `<span class="badge cat">${catDot(c)}${esc(T.cats[c])}</span>`);
+  if (p.wheelchair === 'yes' || p.wheelchair === 'partly') b.push(badge(ICON.wheelchair, t(p.wheelchair)));
+  if (p.dogs === true) b.push(badge(ICON.dogs, t('f_dogs')));
+  if (p.family === true) b.push(badge(ICON.family, t('familyYes')));
+  if (p.indoor === true) b.push(badge(ICON.indoor, t('indoorYes')));
+  if (p.free === true) b.push(badge(ICON.free, t('freeYes')));
+  const facts = [[t('elevation'), p.elev ? `${p.elev.toLocaleString(lang)} m` : `≈ ${(Math.round(p.h/10)*10).toLocaleString(lang)} m`]];
+  if (p.season) facts.push([t('season'), t('s_'+p.season)]);
+  if (p.duration) facts.push([t('duration'), T.ui['d_'+p.duration] || p.duration]);
+  if (p.wheelchair) facts.push([t('wheelchair'), t(p.wheelchair)]);
+  if (p.dogs === true || p.dogs === false) facts.push([t('dogs'), p.dogs ? t('dogsYes') : t('dogsNo')]);
+  if (p.free === true || p.free === false) facts.push([t('price'), p.free ? t('freeYes') : t('freeNo')]);
+  facts.push(['Meiringen', p.km < 0.5 ? t('here') : `${kmText(p)} ${t('fromStation')}`]);
+  const acc = p.access, access = acc.type === 'walk' ? t('a_walk', { min:acc.min, stop:acc.stop }) : t('a_'+acc.type, { stop:acc.stop });
+  const [E, N] = lv95(p.lon, p.lat), mapLang = ['de','fr','it','en'].includes(lang) ? lang : 'en';
+  const links = p.links.map(([k, u], i) => linkRow(t('l_'+k), u, i === 0)).join('')
+    + (regionWeb(reg) ? linkRow(t('l_regionPage', { region:T.regions[reg.id].name }), regionWeb(reg)) : '')
+    + linkRow(t('l_map'), `https://map.geo.admin.ch/?lang=${mapLang}&E=${E}&N=${N}&zoom=9&crosshair=marker`);
+  const near = PLACES.filter(q => q !== p).map(q => ({ q, d:Math.hypot(q.x-p.x, q.z-p.z) })).sort((a,b) => a.d-b.d).slice(0,4).map(o => o.q);
+  const fl = filtered(), list = fl.some(q => q.id === id) ? fl : sorted(PLACES), i = list.findIndex(q => q.id === id);
+  el.innerHTML = `${grab}<div class="pagehead"><nav class="crumbs"><button type="button" data-region="${reg.id}">${esc(T.regions[reg.id].name)}</button></nav>${close}</div>
+    <h2>${esc(tx.name)}</h2><p class="tag">${esc(tx.tag)}</p>
+    <div class="badges">${b.join('')}</div>
+    <h3>${esc(t('about'))}</h3><p class="body">${esc(tx.text)}</p>${p.r && p.cats.includes('hiking') ? routeBlock(p.r) : ''}
+    <h3>${esc(t('highlights'))}</h3><ul class="hl">${tx.hl.map(h => `<li>${esc(h)}</li>`).join('')}</ul>
+    <h3>${esc(t('goodToKnow'))}</h3><dl class="facts">${facts.map(([a,v]) => `<dt>${esc(a)}</dt><dd>${esc(v)}</dd>`).join('')}</dl>
+    <h3>${esc(t('gettingThere'))}</h3><p class="body">${esc(access)}</p>
+    <div class="links" style="margin-top:8px">${linkRow(t('l_directions'), `https://www.google.com/maps/dir/?api=1&destination=${p.lat},${p.lon}&travelmode=transit`)}</div>
+    <h3>${esc(t('links'))}</h3><div class="links">${links}</div>
+    <h3>${esc(t('nearby'))}</h3><div class="cards">${near.map(q => placeCard(q)).join('')}</div>
+    <div class="pnav"><button type="button" data-step="-1">← ${esc(t('prev'))}</button><span>${esc(t('placeOf', { i:i+1, n:list.length }))}</span><button type="button" data-step="1">${esc(t('next'))} →</button></div>
+    <p class="credit">${esc(t('credit'))}</p>`;
+}
+$('#page').addEventListener('click', e => {
+  const el = e.target.closest('button'); if (!el || el.classList.contains('b-expand')) return;
+  if (el.dataset.place){ stopTour(); go(el.dataset.place); }
+  else if (el.dataset.region){ stopTour(); go(el.dataset.region); }
+  else if ('close' in el.dataset){ stopTour(); go(byId[state.page] && state.region !== 'all' ? state.region : ''); }
+  else if (el.dataset.step){ stopTour(); step(+el.dataset.step); }
+});
+document.addEventListener('click', e => { if (e.target.closest('.b-expand')) document.body.classList.toggle('expanded'); });
+function step(d){
+  const fl = filtered(), list = fl.length ? fl : sorted(PLACES);
+  const i = list.findIndex(q => q.id === state.page);
+  go(list[(i < 0 ? (d > 0 ? 0 : list.length-1) : (i + d + list.length) % list.length)].id);
+}
+
+/* ---------------------------------------------------------------- routing */
+function go(id){ if ((location.hash.slice(1) || '') === id) route(); else if (id) location.hash = id; else { history.replaceState(null, '', location.pathname + location.search); route(); } }
+function route(){
+  const id = location.hash.slice(1);
+  if (regionById[id]){ state.region = id; state.page = id; }
+  else if (byId[id]){ state.page = id; }
+  else { state.page = null; state.region = 'all'; }
+  renderExplore(); renderPage(); $('#page').scrollTop = 0;
+  flyTo(viewFor(state.page));
+}
+addEventListener('hashchange', route);
+
+/* ---------------------------------------------------------------- map labels */
+const labels = $('#labels');
+for (const p of PLACES){
+  const pin = document.createElement('button'); pin.className = 'pin'; pin.type = 'button'; pin.tabIndex = -1;
+  pin.innerHTML = `<span class="lab"><i style="background:var(--c-${p.cats[0]})"></i><span></span></span><span class="stem"></span><span class="foot"></span>`;
+  pin.addEventListener('click', () => { stopTour(); go(p.id); });
+  labels.appendChild(pin); p.pin = pin; p.pinName = pin.querySelector('.lab span'); p.anchor = new THREE.Vector3(p.x, p.h + 2, p.z);
+}
+const rlabels = REGIONS.filter(r => r.places.length).map(r => {
+  const el = document.createElement('button'); el.className = 'rlabel'; el.type = 'button'; el.tabIndex = -1;
+  el.addEventListener('click', () => { stopTour(); go(r.id); }); labels.appendChild(el);
+  return { id:r.id, el, anchor:new THREE.Vector3(r.x, heightAt(r.x, r.z) + 1600, r.z) };
+});
+const peaks = meta.peaks.filter(p => p.e >= 2300).sort((a,b) => b.e - a.e).map(p => {
+  const el = document.createElement('div'); el.className = 'peak'; el.innerHTML = `${esc(p.n)} <span>${p.e}</span>`; labels.appendChild(el);
+  return { ...p, el, anchor:new THREE.Vector3(p.x, heightAt(p.x, p.z) + 6, p.z) };
+});
+function updatePins(){ for (const p of PLACES){ p.visible = matches(p) || state.page === p.id; p.pin.classList.toggle('on', state.page === p.id); } }
+
+const v3 = new THREE.Vector3();
+function occluded(p){ const c = camera.position; for (let k=2;k<30;k++){ const f = k/30, x = c.x+(p.x-c.x)*f, y = c.y+(p.y-c.y)*f, z = c.z+(p.z-c.z)*f; if (heightAt(x,z) > y + 4) return true; } return false; }
+let frame = 0;
+function project(a){ v3.copy(a).project(camera); if (v3.z > 1 || Math.abs(v3.x) > 1.1 || Math.abs(v3.y) > 1.1) return null; return [(v3.x*.5+.5)*innerWidth, (-v3.y*.5+.5)*innerHeight, v3.z]; }
+function updateLabels(){
+  frame++;
+  const camDist = camera.position.distanceTo(controls.target), boxes = [];
+  const order = [...PLACES].sort((a,b) => (b.id === state.page) - (a.id === state.page));
+  for (const p of order){
+    const s = p.visible && project(p.anchor);
+    if (!s){ p.pin.style.opacity = 0; p.pin.style.pointerEvents = 'none'; continue; }
+    const [x, y, z] = s;
+    if (frame % 3 === 0) p.occ = occluded(p.anchor);
+    if (!p.lw) p.lw = p.pin.firstElementChild.offsetWidth || 140;
+    const on = p.id === state.page, lh = on ? 64 : 44, box = [x - p.lw/2, y - lh - 22, x + p.lw/2, y - lh + 4];
+    const hit = !on && (camDist > 22000 || boxes.some(b => box[0] < b[2] && box[2] > b[0] && box[1] < b[3] && box[3] > b[1]));
+    p.pin.classList.toggle('compact', hit);
+    boxes.push(hit ? [x-10, box[1], x+10, box[3]] : box);
+    p.pin.style.transform = `translate(${x}px, ${y}px) translate(-50%, calc(-100% + 4px))`;
+    p.pin.style.opacity = p.occ && !on ? 0.3 : 1; p.pin.style.pointerEvents = 'auto';
+    p.pin.style.zIndex = on ? 1000 : Math.round(900 - z*400);
+  }
+  for (const r of rlabels){
+    const s = camDist > 7000 && project(r.anchor);
+    if (!s){ r.el.style.opacity = 0; r.el.style.pointerEvents = 'none'; continue; }
+    r.el.style.opacity = state.region === r.id || state.region === 'all' ? 1 : 0.55; r.el.style.pointerEvents = 'auto';
+    r.el.style.transform = `translate(${s[0]}px, ${s[1]}px) translate(-50%, -50%)`;
+    boxes.push([s[0]-80, s[1]-14, s[0]+80, s[1]+14]);
+  }
+  const placed = [];
+  for (const p of peaks){
+    const s = project(p.anchor), dd = camera.position.distanceTo(p.anchor);
+    if (!s || dd > 30000){ p.el.style.opacity = 0; continue; }
+    const [x, y] = s;
+    if (frame % 4 === 0) p.occ = occluded(p.anchor);
+    const clash = placed.some(q => Math.abs(q[0]-x) < 120 && Math.abs(q[1]-y) < 22) || boxes.some(b => x+50 > b[0] && x-50 < b[2] && y > b[1]-6 && y-16 < b[3]+30);
+    if (p.occ || clash || (camDist > 15000 && p.e < 3000) || (camDist < 1200 && dd > 8000)){ p.el.style.opacity = 0; continue; }
+    placed.push([x,y]); p.el.style.opacity = 1; p.el.style.transform = `translate(${x}px, ${y}px) translate(-50%, -100%)`;
+  }
+}
+
+/* ---------------------------------------------------------------- language switcher */
+function renderStatic(){
+  document.documentElement.lang = lang;
+  $('#t-brandSub').textContent = t('brandSub'); $('#t-overview').textContent = t('overview'); $('#t-tour').textContent = t('tour');
+  $('#b-overview').title = t('overview'); $('#b-tour').title = t('tour');
+  $('#langs').innerHTML = LANGS.map(l => `<button type="button" data-lang="${l}" aria-pressed="${l === lang}" title="${esc(l.toUpperCase())}">${l}</button>`).join('');
+  for (const r of rlabels) r.el.textContent = T.regions[r.id].name;
+  for (const p of PLACES){ p.pinName.textContent = pn(p); p.lw = 0; }
+}
+$('#langs').addEventListener('click', async e => {
+  const b = e.target.closest('button'); if (!b || b.dataset.lang === lang) return;
+  const next = b.dataset.lang;
+  try { T = await loadText(next); } catch { return; }
+  lang = next; try { localStorage.setItem('haslital-lang', lang); } catch {}
+  renderStatic(); renderExplore(); renderPage();
+});
+
+/* ---------------------------------------------------------------- camera */
+const OVERVIEW = { x:-1200, y:1400, z:1200, az:8, el:50, dist:33000 };
+const mobile = () => innerWidth <= 960;
+function viewFor(id){
+  if (!id) return { ...OVERVIEW, dist: OVERVIEW.dist * (mobile() ? 1.3 : 1) };
+  const r = regionById[id];
+  if (r) return { x:r.x, y:heightAt(r.x, r.z), z:r.z, az:10, el:48, dist:Math.max(3500, r.ext*3.2) * (mobile() ? 1.35 : 1) };
+  const p = byId[id], v = p.view;
+  if (!v){ const r = p.r; return { x:r.cx, y:heightAt(r.cx, r.cz), z:r.cz, az:10, el:50, dist:Math.max(1600, r.ext*1.9) * (mobile() ? 1.35 : 1) }; }
+  return { x:p.x, y:p.h + (v.ty||0), z:p.z, az:v.az, el:v.el, dist:v.dist * (mobile() ? 1.3 : 1) };
+}
+function camState(){ const off = camera.position.clone().sub(controls.target), d = off.length();
+  return { x:controls.target.x, y:controls.target.y, z:controls.target.z, dist:d, el:Math.asin(off.y/d)*180/Math.PI, az:Math.atan2(off.x, off.z)*180/Math.PI }; }
+function setCam(v){ const e = rad(v.el), a = rad(v.az); controls.target.set(v.x, v.y, v.z);
+  camera.position.set(v.x + Math.sin(a)*Math.cos(e)*v.dist, v.y + Math.sin(e)*v.dist, v.z + Math.cos(a)*Math.cos(e)*v.dist); camera.lookAt(controls.target); }
+let flight = null;
+function flyTo(v, ms){
+  const a = camState(); let daz = v.az - a.az; daz = ((daz + 540) % 360) - 180;
+  const travel = Math.hypot(v.x-a.x, v.z-a.z), bump = Math.min(1.2, travel / Math.max(a.dist, v.dist) * 0.7);
+  ms = reduceMotion ? 0 : (ms ?? Math.min(4500, 1600 + travel*0.18));
+  flight = { a, v, daz, bump, t0:performance.now(), ms };
+}
+function stepFlight(now){
+  if (!flight) return;
+  const { a, v, daz, bump, t0, ms } = flight, s = ms ? Math.min(1, (now-t0)/ms) : 1, e = s < .5 ? 4*s*s*s : 1 - Math.pow(-2*s+2, 3)/2;
+  const dist = Math.exp(Math.log(a.dist) + (Math.log(v.dist) - Math.log(a.dist))*e) * (1 + bump*Math.sin(Math.PI*s));
+  setCam({ x:a.x+(v.x-a.x)*e, y:a.y+(v.y-a.y)*e, z:a.z+(v.z-a.z)*e, az:a.az+daz*e, el:a.el+(v.el-a.el)*e + bump*8*Math.sin(Math.PI*s), dist });
+  if (s >= 1) flight = null;
+}
+controls.addEventListener('start', () => { flight = null; stopTour(); });
+
+let tourTimer = null;
+function stopTour(){ if (tourTimer){ clearInterval(tourTimer); tourTimer = null; $('#b-tour').setAttribute('aria-pressed', 'false'); } }
+$('#b-tour').addEventListener('click', () => { if (tourTimer){ stopTour(); return; } $('#b-tour').setAttribute('aria-pressed','true'); step(1); tourTimer = setInterval(() => step(1), 9000); });
+$('#b-overview').addEventListener('click', () => { stopTour(); state.cat = 'all'; state.feat.clear(); go(''); });
+addEventListener('keydown', e => {
+  if (e.target.closest && e.target.closest('input,textarea,select')) return;
+  if (e.key === 'ArrowRight'){ stopTour(); step(1); } else if (e.key === 'ArrowLeft'){ stopTour(); step(-1); } else if (e.key === 'Escape' && state.page){ stopTour(); go(''); }
+});
+
+/* keep the subject centred in the free part of the screen */
+function applyViewOffset(){
+  const w = innerWidth, h = innerHeight; let sx = 0, sy = 0;
+  if (mobile()){ const sheet = (document.body.classList.contains('has-page') ? $('#page') : $('#explore')).getBoundingClientRect(); sy = Math.max(0, (h - sheet.top) * 0.45); }
+  else { const l = $('#explore').getBoundingClientRect(), r = $('#page').getBoundingClientRect(); sx = ((w - r.left) - l.right) / 2; }
+  camera.setViewOffset(w, h, sx, sy, w, h);
+}
+function resize(){ renderer.setSize(innerWidth, innerHeight, false); camera.aspect = innerWidth/innerHeight; camera.fov = innerWidth < 600 ? 55 : 42; camera.updateProjectionMatrix(); applyViewOffset(); }
+addEventListener('resize', resize);
+
+/* ---------------------------------------------------------------- start */
+renderStatic();
+setCam({ ...OVERVIEW, az:OVERVIEW.az - 40, el:64, dist:60000 });
+route();
+resize();
+
+const clock = new THREE.Clock();
+renderer.setAnimationLoop(() => {
+  stepFlight(performance.now());
+  if (!flight){
+    controls.update();
+    const tg = controls.target; tg.x = Math.max(-W/2, Math.min(W/2, tg.x)); tg.z = Math.max(-H/2, Math.min(H/2, tg.z));
+    const g = heightAt(camera.position.x, camera.position.z) + 25; if (camera.position.y < g) camera.position.y = g;
+  }
+  if (frame % 10 === 0){
+    applyViewOffset();
+    const c = camera.position;
+    for (const tl of tiles){
+      const dx = Math.max(tl.x0 - c.x, 0, c.x - tl.x1), dz = Math.max(tl.z0 - c.z, 0, c.z - tl.z1);
+      const d = Math.hypot(dx, dz, Math.max(0, c.y - 1500));
+      if (d < 9000 && !tl.hi) loadHi(tl);
+      const vis = d < 7500; for (const m of tl.trees) m.visible = vis;
+    }
+  }
+  const time = clock.getElapsedTime();
+  for (const c of cabins) placeCabin(c, time);
+  renderer.render(scene, camera);
+  updateLabels();
+});
+$('#loader').classList.add('done');
+</script>
+
+</body>
+</html>

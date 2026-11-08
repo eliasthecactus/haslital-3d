@@ -1,0 +1,1455 @@
+{
+ "regions": [
+  {
+   "id": "meiringen",
+   "web": {
+    "en": "https://haslital.swiss/en/discover/places-to-visit/meiringen.html",
+    "de": "https://haslital.swiss/de/ausflugsziele/meiringen.html",
+    "fr": "https://haslital.swiss/fr/decouvrir/excursions/meiringen.html"
+   }
+  },
+  {
+   "id": "hasliberg",
+   "web": {
+    "en": "https://haslital.swiss/en/discover/places-to-visit/hasliberg.html",
+    "de": "https://haslital.swiss/de/ausflugsziele/hasliberg-im-haslital.html",
+    "fr": "https://haslital.swiss/fr/decouvrir/excursions/hasliberg.html"
+   }
+  },
+  {
+   "id": "rosenlaui",
+   "web": {
+    "en": "https://haslital.swiss/en/discover/places-to-visit/rosenlaui.html",
+    "de": "https://haslital.swiss/de/ausflugsziele/rosenlaui.html",
+    "fr": "https://haslital.swiss/fr/decouvrir/excursions/rosenlaui.html"
+   }
+  },
+  {
+   "id": "grimselwelt",
+   "web": {
+    "en": "https://haslital.swiss/en/discover/places-to-visit/grimselwelt.html",
+    "de": "https://haslital.swiss/de/ausflugsziele/grimselwelt.html",
+    "fr": "https://haslital.swiss/fr/decouvrir/excursions/grimselwelt.html"
+   }
+  },
+  {
+   "id": "gadmental",
+   "web": {
+    "en": "https://haslital.swiss/en/discover/places-to-visit/gadmental.html",
+    "de": "https://haslital.swiss/de/ausflugsziele/gadmental.html",
+    "fr": "https://haslital.swiss/fr/decouvrir/excursions/gadmental.html"
+   }
+  },
+  {
+   "id": "engstlenalp",
+   "web": {
+    "en": "https://haslital.swiss/en/discover/places-to-visit/engstlenalp.html",
+    "de": "https://haslital.swiss/de/ausflugsziele/engstlenalp.html",
+    "fr": "https://haslital.swiss/fr/decouvrir/excursions/engstlenalp.html"
+   }
+  },
+  {
+   "id": "nearby",
+   "web": {}
+  }
+ ],
+ "places": [
+  {
+   "id": "meiringen-village",
+   "region": "meiringen",
+   "cats": [
+    "culture"
+   ],
+   "lon": 8.188,
+   "lat": 46.7285,
+   "elev": 595,
+   "wheelchair": "yes",
+   "dogs": true,
+   "family": true,
+   "indoor": false,
+   "free": true,
+   "season": "all",
+   "duration": "1–2 h",
+   "access": {
+    "type": "stop",
+    "stop": "Meiringen"
+   },
+   "links": [
+    [
+     "official",
+     "https://www.meiringen.ch/"
+    ]
+   ],
+   "view": {
+    "az": -25,
+    "el": 34,
+    "dist": 1300
+   }
+  },
+  {
+   "id": "sherlock-holmes-museum",
+   "region": "meiringen",
+   "cats": [
+    "culture"
+   ],
+   "lon": 8.18735,
+   "lat": 46.72694,
+   "wheelchair": null,
+   "dogs": null,
+   "family": true,
+   "indoor": true,
+   "free": false,
+   "season": null,
+   "duration": "45 min",
+   "access": {
+    "type": "walk",
+    "min": 3,
+    "stop": "Meiringen"
+   },
+   "links": [
+    [
+     "official",
+     "https://www.sherlockholmes.ch/"
+    ]
+   ],
+   "view": {
+    "az": 10,
+    "el": 30,
+    "dist": 340
+   }
+  },
+  {
+   "id": "reichenbach-falls",
+   "region": "meiringen",
+   "cats": [
+    "nature",
+    "lifts"
+   ],
+   "lon": 8.18242,
+   "lat": 46.71319,
+   "wheelchair": null,
+   "dogs": null,
+   "family": true,
+   "indoor": false,
+   "free": false,
+   "season": "summer",
+   "duration": "1–2 h",
+   "access": {
+    "type": "walk",
+    "min": 15,
+    "stop": "Meiringen"
+   },
+   "links": [
+    [
+     "official",
+     "https://www.grimselwelt.ch/bahnen/reichenbachfall-bahn/"
+    ]
+   ],
+   "view": {
+    "az": 170,
+    "el": 20,
+    "dist": 760
+   }
+  },
+  {
+   "id": "aare-gorge",
+   "region": "meiringen",
+   "cats": [
+    "gorges",
+    "nature"
+   ],
+   "lon": 8.2105,
+   "lat": 46.7166,
+   "wheelchair": null,
+   "dogs": null,
+   "family": true,
+   "indoor": false,
+   "free": false,
+   "season": "spring-autumn",
+   "duration": "1–1.5 h",
+   "access": {
+    "type": "stop",
+    "stop": "Aareschlucht West"
+   },
+   "links": [
+    [
+     "official",
+     "https://aareschlucht.ch/"
+    ]
+   ],
+   "view": {
+    "az": 205,
+    "el": 52,
+    "dist": 1500
+   }
+  },
+  {
+   "id": "alpbach-gorge",
+   "region": "meiringen",
+   "cats": [
+    "gorges",
+    "nature"
+   ],
+   "lon": 8.19365,
+   "lat": 46.73006,
+   "wheelchair": "no",
+   "dogs": null,
+   "family": true,
+   "indoor": false,
+   "free": true,
+   "season": null,
+   "duration": "1 h",
+   "access": {
+    "type": "walk",
+    "min": 10,
+    "stop": "Meiringen"
+   },
+   "links": [
+    [
+     "official",
+     "https://alpbachschlucht.ch/"
+    ]
+   ],
+   "view": {
+    "az": -10,
+    "el": 22,
+    "dist": 700
+   }
+  },
+  {
+   "id": "hasli-museum",
+   "region": "meiringen",
+   "cats": [
+    "culture"
+   ],
+   "lon": 8.18937,
+   "lat": 46.72916,
+   "wheelchair": null,
+   "dogs": null,
+   "family": true,
+   "indoor": true,
+   "free": false,
+   "season": null,
+   "duration": "1 h",
+   "access": {
+    "type": "walk",
+    "min": 5,
+    "stop": "Meiringen"
+   },
+   "links": [
+    [
+     "official",
+     "https://www.haslimuseum.ch/"
+    ]
+   ],
+   "view": {
+    "az": 15,
+    "el": 32,
+    "dist": 420
+   }
+  },
+  {
+   "id": "climbing-hall",
+   "region": "meiringen",
+   "cats": [
+    "active"
+   ],
+   "lon": 8.18914,
+   "lat": 46.72261,
+   "wheelchair": null,
+   "dogs": null,
+   "family": true,
+   "indoor": true,
+   "free": false,
+   "season": "all",
+   "duration": "2–3 h",
+   "access": {
+    "type": "stop",
+    "stop": "Meiringen Alpbach"
+   },
+   "links": [
+    [
+     "official",
+     "https://www.kletterhalle-haslital.ch/"
+    ]
+   ],
+   "view": {
+    "az": -20,
+    "el": 30,
+    "dist": 460
+   }
+  },
+  {
+   "id": "air-base",
+   "region": "meiringen",
+   "cats": [
+    "culture"
+   ],
+   "lon": 8.1089,
+   "lat": 46.7423,
+   "wheelchair": null,
+   "dogs": null,
+   "family": true,
+   "indoor": false,
+   "free": true,
+   "season": null,
+   "duration": "1 h",
+   "access": {
+    "type": "stop",
+    "stop": "Meiringen"
+   },
+   "links": [
+    [
+     "official",
+     "https://www.vtg.admin.ch/"
+    ]
+   ],
+   "view": {
+    "az": 25,
+    "el": 28,
+    "dist": 3400
+   }
+  },
+  {
+   "id": "maegisalp",
+   "region": "hasliberg",
+   "cats": [
+    "lifts",
+    "views"
+   ],
+   "lon": 8.2366,
+   "lat": 46.74925,
+   "wheelchair": null,
+   "dogs": null,
+   "family": true,
+   "indoor": false,
+   "free": false,
+   "season": "summer-winter",
+   "duration": "half day",
+   "access": {
+    "type": "stop",
+    "stop": "Meiringen"
+   },
+   "links": [
+    [
+     "official",
+     "https://meiringen-hasliberg.ch/"
+    ]
+   ],
+   "view": {
+    "az": -15,
+    "el": 30,
+    "dist": 4200,
+    "ty": -250
+   }
+  },
+  {
+   "id": "planplatten",
+   "region": "hasliberg",
+   "cats": [
+    "views",
+    "lifts"
+   ],
+   "lon": 8.25522,
+   "lat": 46.73671,
+   "elev": 2245,
+   "wheelchair": null,
+   "dogs": null,
+   "family": true,
+   "indoor": false,
+   "free": false,
+   "season": "summer-winter",
+   "duration": "half day",
+   "access": {
+    "type": "stop",
+    "stop": "Meiringen"
+   },
+   "links": [
+    [
+     "official",
+     "https://meiringen-hasliberg.ch/"
+    ]
+   ],
+   "view": {
+    "az": 150,
+    "el": 22,
+    "dist": 2600
+   }
+  },
+  {
+   "id": "muggestutz",
+   "region": "hasliberg",
+   "cats": [
+    "hiking",
+    "active",
+    "nature"
+   ],
+   "lon": 8.229,
+   "lat": 46.7405,
+   "wheelchair": "no",
+   "dogs": null,
+   "family": true,
+   "indoor": false,
+   "free": true,
+   "season": "summer",
+   "duration": "2–3 h",
+   "access": {
+    "type": "stop",
+    "stop": "Hasliberg Reuti"
+   },
+   "links": [
+    [
+     "official",
+     "https://meiringen-hasliberg.ch/"
+    ]
+   ],
+   "view": {
+    "az": -5,
+    "el": 34,
+    "dist": 2600
+   },
+   "route": "muggestutz"
+  },
+  {
+   "id": "kaeserstatt",
+   "region": "hasliberg",
+   "cats": [
+    "views",
+    "lifts"
+   ],
+   "lon": 8.21894,
+   "lat": 46.75765,
+   "wheelchair": null,
+   "dogs": null,
+   "family": true,
+   "indoor": false,
+   "free": false,
+   "season": "summer-winter",
+   "duration": "half day",
+   "access": {
+    "type": "stop",
+    "stop": "Hasliberg Wasserwendi"
+   },
+   "links": [
+    [
+     "official",
+     "https://meiringen-hasliberg.ch/"
+    ]
+   ],
+   "view": {
+    "az": 10,
+    "el": 30,
+    "dist": 2300
+   }
+  },
+  {
+   "id": "bruenig-pass",
+   "region": "hasliberg",
+   "cats": [
+    "views",
+    "culture"
+   ],
+   "lon": 8.137,
+   "lat": 46.7569,
+   "elev": 1008,
+   "wheelchair": null,
+   "dogs": true,
+   "family": true,
+   "indoor": false,
+   "free": true,
+   "season": "all",
+   "duration": "1 h",
+   "access": {
+    "type": "stop",
+    "stop": "Brünig-Hasliberg"
+   },
+   "links": [
+    [
+     "festival",
+     "https://bruenigschwinget.ch/"
+    ],
+    [
+     "rail",
+     "https://www.zentralbahn.ch/"
+    ]
+   ],
+   "view": {
+    "az": 30,
+    "el": 30,
+    "dist": 2000
+   }
+  },
+  {
+   "id": "rosenlaui-gorge",
+   "region": "rosenlaui",
+   "cats": [
+    "gorges",
+    "nature"
+   ],
+   "lon": 8.1555,
+   "lat": 46.6783,
+   "elev": 1360,
+   "wheelchair": "no",
+   "dogs": null,
+   "family": true,
+   "indoor": false,
+   "free": false,
+   "season": "summer",
+   "duration": "1 h",
+   "access": {
+    "type": "postbus",
+    "stop": "Rosenlaui, Gletscherschlucht"
+   },
+   "links": [
+    [
+     "official",
+     "https://www.rosenlauischlucht.ch/"
+    ]
+   ],
+   "view": {
+    "az": 150,
+    "el": 30,
+    "dist": 2200
+   },
+   "route": "rosenlaui-gorge"
+  },
+  {
+   "id": "hotel-rosenlaui",
+   "region": "rosenlaui",
+   "cats": [
+    "culture"
+   ],
+   "lon": 8.15349,
+   "lat": 46.68029,
+   "wheelchair": null,
+   "dogs": null,
+   "family": true,
+   "indoor": true,
+   "free": false,
+   "season": "summer",
+   "duration": "1 h",
+   "access": {
+    "type": "postbus",
+    "stop": "Rosenlaui"
+   },
+   "links": [
+    [
+     "official",
+     "https://www.rosenlaui.ch/"
+    ]
+   ],
+   "view": {
+    "az": 160,
+    "el": 26,
+    "dist": 1100
+   }
+  },
+  {
+   "id": "schwarzwaldalp-sawmill",
+   "region": "rosenlaui",
+   "cats": [
+    "culture"
+   ],
+   "lon": 8.13385,
+   "lat": 46.67669,
+   "elev": 1455,
+   "wheelchair": null,
+   "dogs": null,
+   "family": true,
+   "indoor": false,
+   "free": null,
+   "season": "summer",
+   "duration": "30 min",
+   "access": {
+    "type": "postbus",
+    "stop": "Schwarzwaldalp"
+   },
+   "links": [
+    [
+     "official",
+     "https://saege-schwarzwaldalp.ch/"
+    ],
+    [
+     "hotel",
+     "https://www.schwarzwaldalp.ch/"
+    ]
+   ],
+   "view": {
+    "az": 140,
+    "el": 30,
+    "dist": 1000
+   }
+  },
+  {
+   "id": "engelhorn-hut",
+   "region": "rosenlaui",
+   "cats": [
+    "hiking",
+    "active",
+    "views"
+   ],
+   "lon": 8.17279,
+   "lat": 46.68308,
+   "elev": 1901,
+   "wheelchair": "no",
+   "dogs": null,
+   "family": false,
+   "indoor": false,
+   "free": true,
+   "season": "summer",
+   "duration": "4–5 h",
+   "access": {
+    "type": "postbus",
+    "stop": "Rosenlaui"
+   },
+   "links": [
+    [
+     "official",
+     "https://www.aacb.ch/huetten/engelhornhuette/"
+    ]
+   ],
+   "view": {
+    "az": 200,
+    "el": 28,
+    "dist": 2600
+   },
+   "route": "engelhorn-hut"
+  },
+  {
+   "id": "gelmerbahn",
+   "region": "grimselwelt",
+   "cats": [
+    "lifts",
+    "nature"
+   ],
+   "lon": 8.30857,
+   "lat": 46.61366,
+   "elev": 1860,
+   "wheelchair": "no",
+   "dogs": true,
+   "family": true,
+   "indoor": false,
+   "free": false,
+   "season": "summer",
+   "duration": "2–3 h",
+   "access": {
+    "type": "postbus",
+    "stop": "Handegg"
+   },
+   "links": [
+    [
+     "official",
+     "https://www.grimselwelt.ch/bahnen/gelmerbahn/"
+    ]
+   ],
+   "view": {
+    "az": -85,
+    "el": 38,
+    "dist": 2300,
+    "ty": 150
+   }
+  },
+  {
+   "id": "handeck-bridge",
+   "region": "grimselwelt",
+   "cats": [
+    "gorges",
+    "active"
+   ],
+   "lon": 8.30797,
+   "lat": 46.61364,
+   "wheelchair": "no",
+   "dogs": null,
+   "family": true,
+   "indoor": false,
+   "free": true,
+   "season": "summer",
+   "duration": "30 min",
+   "access": {
+    "type": "postbus",
+    "stop": "Handegg"
+   },
+   "links": [
+    [
+     "official",
+     "https://www.grimselwelt.ch/bahnen/gelmerbahn/"
+    ]
+   ],
+   "view": {
+    "az": -40,
+    "el": 30,
+    "dist": 800
+   }
+  },
+  {
+   "id": "grimsel-hospiz",
+   "region": "grimselwelt",
+   "cats": [
+    "culture",
+    "views"
+   ],
+   "lon": 8.33168,
+   "lat": 46.57158,
+   "elev": 1980,
+   "wheelchair": null,
+   "dogs": null,
+   "family": true,
+   "indoor": true,
+   "free": false,
+   "season": "summer",
+   "duration": "1 h",
+   "access": {
+    "type": "postbus",
+    "stop": "Grimsel Hospiz"
+   },
+   "links": [
+    [
+     "official",
+     "https://www.grimselwelt.ch/grimselhotels/grimsel-hospiz/"
+    ]
+   ],
+   "view": {
+    "az": 200,
+    "el": 30,
+    "dist": 2400
+   }
+  },
+  {
+   "id": "grimsel-pass",
+   "region": "grimselwelt",
+   "cats": [
+    "views"
+   ],
+   "lon": 8.3377,
+   "lat": 46.56152,
+   "elev": 2164,
+   "wheelchair": null,
+   "dogs": true,
+   "family": true,
+   "indoor": false,
+   "free": true,
+   "season": "summer",
+   "duration": "1 h",
+   "access": {
+    "type": "postbus",
+    "stop": "Grimsel Passhöhe"
+   },
+   "links": [
+    [
+     "region",
+     "https://www.grimselwelt.ch/"
+    ]
+   ],
+   "view": {
+    "az": 0,
+    "el": 30,
+    "dist": 3000
+   }
+  },
+  {
+   "id": "kristall-guttannen",
+   "region": "grimselwelt",
+   "cats": [
+    "culture"
+   ],
+   "lon": 8.28914,
+   "lat": 46.65488,
+   "wheelchair": "yes",
+   "dogs": null,
+   "family": true,
+   "indoor": true,
+   "free": false,
+   "season": null,
+   "duration": "1 h",
+   "access": {
+    "type": "postbus",
+    "stop": "Guttannen"
+   },
+   "links": [
+    [
+     "official",
+     "https://kristall-guttannen.ch/"
+    ]
+   ],
+   "view": {
+    "az": 30,
+    "el": 32,
+    "dist": 900
+   }
+  },
+  {
+   "id": "trift-bridge",
+   "region": "gadmental",
+   "cats": [
+    "active",
+    "hiking",
+    "views",
+    "lifts"
+   ],
+   "lon": 8.35623,
+   "lat": 46.69424,
+   "elev": 1720,
+   "wheelchair": "no",
+   "dogs": true,
+   "family": false,
+   "indoor": false,
+   "free": false,
+   "season": "summer",
+   "duration": "4 h",
+   "access": {
+    "type": "postbus",
+    "stop": "Nessental, Triftbahn"
+   },
+   "links": [
+    [
+     "official",
+     "https://www.grimselwelt.ch/bahnen/triftbahn/"
+    ]
+   ],
+   "view": {
+    "az": 230,
+    "el": 30,
+    "dist": 3600
+   },
+   "route": "trift-bridge"
+  },
+  {
+   "id": "taellibahn",
+   "region": "gadmental",
+   "cats": [
+    "active",
+    "lifts"
+   ],
+   "lon": 8.33795,
+   "lat": 46.73224,
+   "wheelchair": "no",
+   "dogs": true,
+   "family": false,
+   "indoor": false,
+   "free": false,
+   "season": "summer",
+   "duration": "half day",
+   "access": {
+    "type": "postbus",
+    "stop": "Gadmen"
+   },
+   "links": [
+    [
+     "official",
+     "https://www.grimselwelt.ch/bahnen/taellibahn/"
+    ]
+   ],
+   "view": {
+    "az": 10,
+    "el": 30,
+    "dist": 2600
+   }
+  },
+  {
+   "id": "engstlensee",
+   "region": "engstlenalp",
+   "cats": [
+    "nature",
+    "views"
+   ],
+   "lon": 8.35,
+   "lat": 46.774,
+   "elev": 1850,
+   "wheelchair": null,
+   "dogs": null,
+   "family": true,
+   "indoor": false,
+   "free": true,
+   "season": "summer",
+   "duration": "half day",
+   "access": {
+    "type": "postbus",
+    "stop": "Engstlenalp"
+   },
+   "links": [
+    [
+     "official",
+     "https://www.engstlenalp.ch/"
+    ]
+   ],
+   "view": {
+    "az": 200,
+    "el": 30,
+    "dist": 2300
+   }
+  },
+  {
+   "id": "ballenberg",
+   "region": "nearby",
+   "cats": [
+    "culture"
+   ],
+   "lon": 8.0849,
+   "lat": 46.7488,
+   "wheelchair": null,
+   "dogs": null,
+   "family": true,
+   "indoor": false,
+   "free": false,
+   "season": "spring-autumn",
+   "duration": "full day",
+   "access": {
+    "type": "stop",
+    "stop": "Brienzwiler"
+   },
+   "links": [
+    [
+     "official",
+     "https://ballenberg.ch/"
+    ]
+   ],
+   "view": {
+    "az": 15,
+    "el": 34,
+    "dist": 1500
+   }
+  },
+  {
+   "id": "via-alpina-scheidegg",
+   "region": "rosenlaui",
+   "cats": [
+    "hiking",
+    "views"
+   ],
+   "lon": 8.18722,
+   "lat": 46.72747,
+   "route": "via-alpina-scheidegg",
+   "wheelchair": "no",
+   "dogs": true,
+   "family": false,
+   "indoor": false,
+   "free": true,
+   "season": "summer",
+   "duration": null,
+   "access": {
+    "type": "stop",
+    "stop": "Meiringen"
+   },
+   "links": [
+    [
+     "viaalpina",
+     "https://www.via-alpina.org/"
+    ]
+   ]
+  },
+  {
+   "id": "via-alpina-engstlenalp",
+   "region": "hasliberg",
+   "cats": [
+    "hiking",
+    "views"
+   ],
+   "lon": 8.34427,
+   "lat": 46.77584,
+   "route": "via-alpina-engstlenalp",
+   "wheelchair": "no",
+   "dogs": true,
+   "family": false,
+   "indoor": false,
+   "free": true,
+   "season": "summer",
+   "duration": null,
+   "access": {
+    "type": "postbus",
+    "stop": "Engstlenalp"
+   },
+   "links": [
+    [
+     "viaalpina",
+     "https://www.via-alpina.org/"
+    ]
+   ]
+  },
+  {
+   "id": "viaberna-rosenlaui-reuti",
+   "region": "rosenlaui",
+   "cats": [
+    "hiking",
+    "views"
+   ],
+   "lon": 8.15356,
+   "lat": 46.68006,
+   "route": "viaberna-rosenlaui-reuti",
+   "wheelchair": "no",
+   "dogs": true,
+   "family": false,
+   "indoor": false,
+   "free": true,
+   "season": "summer",
+   "duration": null,
+   "access": {
+    "type": "postbus",
+    "stop": "Rosenlaui"
+   },
+   "links": []
+  },
+  {
+   "id": "viaberna-reuti-engstlenalp",
+   "region": "hasliberg",
+   "cats": [
+    "hiking",
+    "views"
+   ],
+   "lon": 8.2102,
+   "lat": 46.73241,
+   "route": "viaberna-reuti-engstlenalp",
+   "wheelchair": "no",
+   "dogs": true,
+   "family": false,
+   "indoor": false,
+   "free": true,
+   "season": "summer",
+   "duration": null,
+   "access": {
+    "type": "stop",
+    "stop": "Hasliberg Reuti"
+   },
+   "links": []
+  },
+  {
+   "id": "viaberna-engstlenalp-gadmen",
+   "region": "engstlenalp",
+   "cats": [
+    "hiking",
+    "views",
+    "nature"
+   ],
+   "lon": 8.34476,
+   "lat": 46.77518,
+   "route": "viaberna-engstlenalp-gadmen",
+   "wheelchair": "no",
+   "dogs": true,
+   "family": false,
+   "indoor": false,
+   "free": true,
+   "season": "summer",
+   "duration": null,
+   "access": {
+    "type": "postbus",
+    "stop": "Engstlenalp"
+   },
+   "links": []
+  },
+  {
+   "id": "four-lakes",
+   "region": "engstlenalp",
+   "cats": [
+    "hiking",
+    "nature",
+    "views"
+   ],
+   "lon": 8.26836,
+   "lat": 46.77389,
+   "route": "four-lakes",
+   "wheelchair": "no",
+   "dogs": true,
+   "family": false,
+   "indoor": false,
+   "free": true,
+   "season": "summer",
+   "duration": null,
+   "access": {
+    "type": "lift",
+    "stop": "Melchsee-Frutt"
+   },
+   "links": [
+    [
+     "frutt",
+     "https://frutt.ch/"
+    ]
+   ]
+  },
+  {
+   "id": "planplatten-melchsee",
+   "region": "hasliberg",
+   "cats": [
+    "hiking",
+    "views"
+   ],
+   "lon": 8.25781,
+   "lat": 46.73809,
+   "route": "planplatten-melchsee",
+   "wheelchair": "no",
+   "dogs": true,
+   "family": false,
+   "indoor": false,
+   "free": true,
+   "season": "summer",
+   "duration": null,
+   "access": {
+    "type": "lift",
+    "stop": "Planplatten"
+   },
+   "links": [
+    [
+     "lifts",
+     "https://meiringen-hasliberg.ch/"
+    ]
+   ]
+  },
+  {
+   "id": "kaeserstatt-planplatten",
+   "region": "hasliberg",
+   "cats": [
+    "hiking",
+    "views"
+   ],
+   "lon": 8.21949,
+   "lat": 46.75766,
+   "route": "kaeserstatt-planplatten",
+   "wheelchair": "no",
+   "dogs": true,
+   "family": false,
+   "indoor": false,
+   "free": true,
+   "season": "summer",
+   "duration": null,
+   "access": {
+    "type": "lift",
+    "stop": "Käserstatt"
+   },
+   "links": [
+    [
+     "lifts",
+     "https://meiringen-hasliberg.ch/"
+    ]
+   ]
+  },
+  {
+   "id": "zwergenweg-lischen",
+   "region": "hasliberg",
+   "cats": [
+    "hiking",
+    "nature"
+   ],
+   "lon": 8.21811,
+   "lat": 46.75766,
+   "route": "zwergenweg-lischen",
+   "wheelchair": "no",
+   "dogs": true,
+   "family": true,
+   "indoor": false,
+   "free": true,
+   "season": "summer",
+   "duration": null,
+   "access": {
+    "type": "lift",
+    "stop": "Käserstatt"
+   },
+   "links": [
+    [
+     "lifts",
+     "https://meiringen-hasliberg.ch/"
+    ]
+   ]
+  },
+  {
+   "id": "gelmer-hut",
+   "region": "grimselwelt",
+   "cats": [
+    "hiking",
+    "nature"
+   ],
+   "lon": 8.32128,
+   "lat": 46.61413,
+   "route": "gelmer-hut",
+   "wheelchair": "no",
+   "dogs": true,
+   "family": false,
+   "indoor": false,
+   "free": true,
+   "season": "summer",
+   "duration": null,
+   "access": {
+    "type": "lift",
+    "stop": "Gelmersee (Gelmerbahn)"
+   },
+   "links": [
+    [
+     "hut",
+     "https://www.gelmerhuette.ch/"
+    ],
+    [
+     "gelmerbahn",
+     "https://www.grimselwelt.ch/bahnen/gelmerbahn/"
+    ]
+   ]
+  },
+  {
+   "id": "windegg-hut",
+   "region": "gadmental",
+   "cats": [
+    "hiking",
+    "nature"
+   ],
+   "lon": 8.33568,
+   "lat": 46.70419,
+   "route": "windegg-hut",
+   "wheelchair": "no",
+   "dogs": true,
+   "family": false,
+   "indoor": false,
+   "free": true,
+   "season": "summer",
+   "duration": null,
+   "access": {
+    "type": "lift",
+    "stop": "Underi Trift (Triftbahn)"
+   },
+   "links": [
+    [
+     "hut",
+     "https://www.windegghuette.ch/"
+    ],
+    [
+     "triftbahn",
+     "https://www.grimselwelt.ch/bahnen/triftbahn/"
+    ]
+   ]
+  },
+  {
+   "id": "trift-hut",
+   "region": "gadmental",
+   "cats": [
+    "hiking",
+    "active"
+   ],
+   "lon": 8.33568,
+   "lat": 46.70419,
+   "route": "trift-hut",
+   "wheelchair": "no",
+   "dogs": null,
+   "family": false,
+   "indoor": false,
+   "free": true,
+   "season": "summer",
+   "duration": null,
+   "access": {
+    "type": "lift",
+    "stop": "Underi Trift (Triftbahn)"
+   },
+   "links": [
+    [
+     "triftbahn",
+     "https://www.grimselwelt.ch/bahnen/triftbahn/"
+    ]
+   ]
+  },
+  {
+   "id": "grimselsee-trail",
+   "region": "grimselwelt",
+   "cats": [
+    "hiking",
+    "nature",
+    "views"
+   ],
+   "lon": 8.33192,
+   "lat": 46.57158,
+   "route": "grimselsee-trail",
+   "wheelchair": "no",
+   "dogs": true,
+   "family": false,
+   "indoor": false,
+   "free": true,
+   "season": "summer",
+   "duration": null,
+   "access": {
+    "type": "postbus",
+    "stop": "Grimsel Hospiz"
+   },
+   "links": [
+    [
+     "hospiz",
+     "https://www.grimselwelt.ch/grimselhotels/grimsel-hospiz/"
+    ]
+   ]
+  },
+  {
+   "id": "oberaar",
+   "region": "grimselwelt",
+   "cats": [
+    "hiking",
+    "nature",
+    "views"
+   ],
+   "lon": 8.32981,
+   "lat": 46.56653,
+   "route": "oberaar",
+   "wheelchair": "no",
+   "dogs": true,
+   "family": false,
+   "indoor": false,
+   "free": true,
+   "season": "summer",
+   "duration": null,
+   "access": {
+    "type": "postbus",
+    "stop": "Grimsel Hospiz"
+   },
+   "links": [
+    [
+     "oberaarhaus",
+     "https://www.grimselwelt.ch/grimselhotels/berghaus-oberaar/"
+    ]
+   ]
+  },
+  {
+   "id": "baechlital-hut",
+   "region": "grimselwelt",
+   "cats": [
+    "hiking",
+    "nature"
+   ],
+   "lon": 8.32793,
+   "lat": 46.59057,
+   "route": "baechlital-hut",
+   "wheelchair": "no",
+   "dogs": true,
+   "family": false,
+   "indoor": false,
+   "free": true,
+   "season": "summer",
+   "duration": null,
+   "access": {
+    "type": "postbus",
+    "stop": "Räterichsboden"
+   },
+   "links": [
+    [
+     "hut",
+     "https://www.sac-cas.ch/de/huetten-und-touren/sac-tourenportal/baechlitalhuette-sac-2483/"
+    ]
+   ]
+  },
+  {
+   "id": "maegisalp-gummen",
+   "region": "hasliberg",
+   "cats": [
+    "hiking",
+    "views"
+   ],
+   "lon": 8.23602,
+   "lat": 46.74923,
+   "route": "maegisalp-gummen",
+   "wheelchair": "no",
+   "dogs": true,
+   "family": true,
+   "indoor": false,
+   "free": true,
+   "season": "summer",
+   "duration": null,
+   "access": {
+    "type": "lift",
+    "stop": "Mägisalp"
+   },
+   "links": [
+    [
+     "lifts",
+     "https://meiringen-hasliberg.ch/"
+    ]
+   ]
+  },
+  {
+   "id": "bruenig-brienzwiler",
+   "region": "hasliberg",
+   "cats": [
+    "hiking",
+    "nature"
+   ],
+   "lon": 8.13506,
+   "lat": 46.75769,
+   "route": "bruenig-brienzwiler",
+   "wheelchair": "no",
+   "dogs": true,
+   "family": false,
+   "indoor": false,
+   "free": true,
+   "season": "summer",
+   "duration": null,
+   "access": {
+    "type": "stop",
+    "stop": "Brünig-Hasliberg"
+   },
+   "links": []
+  },
+  {
+   "id": "reichenbachtal",
+   "region": "rosenlaui",
+   "cats": [
+    "hiking",
+    "nature"
+   ],
+   "lon": 8.15356,
+   "lat": 46.68006,
+   "route": "reichenbachtal",
+   "wheelchair": "no",
+   "dogs": true,
+   "family": true,
+   "indoor": false,
+   "free": true,
+   "season": "summer",
+   "duration": null,
+   "access": {
+    "type": "postbus",
+    "stop": "Rosenlaui"
+   },
+   "links": []
+  },
+  {
+   "id": "scheidegg-schwarzwaldalp",
+   "region": "rosenlaui",
+   "cats": [
+    "hiking",
+    "views"
+   ],
+   "lon": 8.13118,
+   "lat": 46.67322,
+   "route": "scheidegg-schwarzwaldalp",
+   "wheelchair": "no",
+   "dogs": true,
+   "family": false,
+   "indoor": false,
+   "free": true,
+   "season": "summer",
+   "duration": null,
+   "access": {
+    "type": "postbus",
+    "stop": "Schwarzwaldalp"
+   },
+   "links": []
+  },
+  {
+   "id": "engstlenalp-jochpass",
+   "region": "engstlenalp",
+   "cats": [
+    "hiking",
+    "views"
+   ],
+   "lon": 8.34427,
+   "lat": 46.77584,
+   "route": "engstlenalp-jochpass",
+   "wheelchair": "no",
+   "dogs": true,
+   "family": false,
+   "indoor": false,
+   "free": true,
+   "season": "summer",
+   "duration": null,
+   "access": {
+    "type": "postbus",
+    "stop": "Engstlenalp"
+   },
+   "links": [
+    [
+     "hotel2",
+     "https://www.engstlenalp.ch/"
+    ]
+   ]
+  }
+ ]
+}

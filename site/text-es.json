@@ -1,0 +1,602 @@
+{
+ "ui": {
+  "lang": "Español",
+  "brandSub": "Meiringen · Hasliberg · Grimsel",
+  "loading": "Cargando el Haslital",
+  "welcomeKicker": "Oberland bernés",
+  "welcomeTitle": "Bienvenidos al Haslital",
+  "welcomeText": "Desde Meiringen, el pueblo del merengue, hasta el granito del Grimsel: gargantas, cascadas, lagos de montaña y algunos de los trenes más empinados de los Alpes. Elija una región o un destino y vuele directamente hasta allí.",
+  "hint": "Arrastre para girar · rueda o dos dedos para hacer zoom",
+  "overview": "Todo el valle",
+  "tour": "Recorrido",
+  "regions": "Regiones",
+  "allRegions": "Todas las regiones",
+  "categories": "Qué hacer",
+  "allCats": "Todo",
+  "filters": "Ideal para",
+  "f_wheelchair": "Silla de ruedas",
+  "f_dogs": "Perros bienvenidos",
+  "f_family": "Familias",
+  "f_indoor": "Días de lluvia",
+  "f_free": "Gratis",
+  "results": "{n} destinos",
+  "result1": "1 destino",
+  "noResults": "Ningún destino cumple todos estos filtros. Quite uno para ver más resultados.",
+  "clear": "Borrar filtros",
+  "fromStation": "desde la estación de Meiringen",
+  "here": "en el pueblo",
+  "close": "Cerrar",
+  "openPage": "Detalles",
+  "about": "Resumen",
+  "highlights": "Lo más destacado",
+  "goodToKnow": "Información útil",
+  "gettingThere": "Cómo llegar",
+  "links": "Enlaces",
+  "nearby": "Cerca",
+  "inRegion": "Destinos en esta región",
+  "explore": "Descubrir {region}",
+  "showAllPlaces": "Ver todos los destinos",
+  "elevation": "Altitud",
+  "season": "Temporada",
+  "duration": "Tiempo necesario",
+  "wheelchair": "Silla de ruedas",
+  "dogs": "Perros",
+  "family": "Familias",
+  "indoor": "Días de lluvia",
+  "price": "Entrada",
+  "yes": "Accesible",
+  "partly": "Parcialmente accesible",
+  "no": "No accesible",
+  "dogsYes": "Bienvenidos",
+  "dogsNo": "No permitidos",
+  "familyYes": "Ideal para familias",
+  "indoorYes": "También con lluvia",
+  "freeYes": "Gratis",
+  "freeNo": "Con entrada",
+  "s_all": "Todo el año",
+  "s_summer": "Temporada de verano",
+  "s_summer-winter": "Verano e invierno",
+  "s_spring-autumn": "De primavera a otoño",
+  "d_half day": "Medio día",
+  "d_full day": "Un día entero",
+  "a_stop": "En tren o autobús hasta {stop}",
+  "a_walk": "{min} min a pie desde la estación de {stop}",
+  "a_postbus": "En autobús postal (PostBus) hasta la parada {stop}",
+  "l_official": "Web oficial",
+  "l_festival": "Fiesta de lucha suiza del Brünig",
+  "l_rail": "Zentralbahn: horarios y billetes",
+  "l_hotel": "Hotel Schwarzwaldalp",
+  "l_region": "Grimselwelt",
+  "l_regionPage": "{region} en haslital.swiss",
+  "l_map": "Abrir en el mapa de swisstopo",
+  "l_directions": "Planificar el viaje",
+  "prev": "Anterior",
+  "next": "Siguiente",
+  "placeOf": "{i} de {n}",
+  "credit": "Datos cartográficos © swisstopo, © colaboradores de OpenStreetMap",
+  "loadError": "No se pudo cargar el mapa. Vuelva a cargar la página.",
+  "a_lift": "En teleférico o tren hasta {stop}",
+  "route": "Ruta",
+  "distance": "Distancia",
+  "ascent": "Subida",
+  "descent": "Bajada",
+  "highest": "Punto más alto",
+  "difficulty": "Tipo de sendero",
+  "hikeTime": "Tiempo de marcha",
+  "diff_hiking": "Sendero",
+  "diff_mountain": "Sendero de montaña",
+  "diff_alpine": "Ruta alpina",
+  "profile": "Perfil de altitud",
+  "timeNote": "Tiempo de marcha sin pausas",
+  "l_viaalpina": "Via Alpina",
+  "l_frutt": "Melchsee-Frutt",
+  "l_lifts": "Remontes Meiringen-Hasliberg",
+  "l_hut": "Web del refugio",
+  "l_gelmerbahn": "Gelmerbahn",
+  "l_triftbahn": "Triftbahn",
+  "l_hospiz": "Grimsel Hospiz",
+  "l_oberaarhaus": "Berghaus Oberaar",
+  "l_hotel2": "Hotel Engstlenalp"
+ },
+ "cats": {
+  "nature": "Agua y naturaleza",
+  "gorges": "Gargantas",
+  "views": "Vistas y cumbres",
+  "culture": "Cultura y museos",
+  "lifts": "Trenes y teleféricos",
+  "active": "Deporte y aventura",
+  "hiking": "Senderismo"
+ },
+ "regions": {
+  "meiringen": {
+   "name": "Meiringen",
+   "intro": "El pueblo principal del valle: las cataratas de Reichenbach, la garganta del Aar y el museo de Sherlock Holmes están a poca distancia a pie de la estación. Según la tradición local, el merengue debe su nombre a Meiringen."
+  },
+  "hasliberg": {
+   "name": "Hasliberg",
+   "intro": "Una terraza soleada sobre Meiringen, unida por teleférico y telecabinas con Mägisalp, Käserstatt y Planplatten. En verano, los senderos de los enanitos encantan a las familias; en invierno, aquí está la estación de esquí del valle."
+  },
+  "rosenlaui": {
+   "name": "Rosenlaui",
+   "intro": "El tranquilo valle del Reichenbach, bajo los Engelhörner y el Wetterhorn, al que se llega en autobús postal desde Meiringen. Una garganta glaciar, un hotel histórico y un antiguo aserradero bordean la carretera hacia la Grosse Scheidegg."
+  },
+  "grimselwelt": {
+   "name": "Grimselwelt",
+   "intro": "Granito, embalses y cascadas en la carretera del puerto del Grimsel. Suba al funicular descubierto más empinado de Europa, cruce un puente colgante sobre la cascada de Handeck y pase una noche en el Grimsel Hospiz."
+  },
+  "gadmental": {
+   "name": "Gadmental",
+   "intro": "Un valle lateral salvaje en la carretera del puerto del Susten. El Triftbahn lleva a uno de los puentes colgantes más espectaculares de los Alpes, y el Tällibahn a una famosa vía ferrata."
+  },
+  "engstlenalp": {
+   "name": "Engstlenalp",
+   "intro": "Al fondo del Gental, la carretera del autobús postal termina en el Engstlensee, un lago de montaña cristalino bajo la cadena del Titlis, con un hotel de montaña histórico en su orilla."
+  },
+  "nearby": {
+   "name": "Alrededores",
+   "intro": "Excursiones justo fuera del Haslital, fáciles de combinar con una estancia en Meiringen."
+  }
+ },
+ "places": {
+  "meiringen-village": {
+   "name": "Pueblo de Meiringen",
+   "tag": "El corazón del Haslital",
+   "text": "Meiringen se extiende por el llano fondo del valle, donde el Aar sale de sus gargantas y fluye hacia el lago de Brienz. Los incendios de 1879 y 1891 destruyeron gran parte del antiguo pueblo de madera, por eso el centro está lleno de casas de piedra construidas en los años posteriores. Cafés, tiendas y la estación están a pocos pasos.",
+   "hl": [
+    "Probar un merengue donde, según la tradición, recibió su nombre",
+    "Pasear de la estación a la iglesia y a la estatua de Sherlock Holmes",
+    "Punto de partida del teleférico del Hasliberg y de las cataratas de Reichenbach"
+   ]
+  },
+  "sherlock-holmes-museum": {
+   "name": "Museo de Sherlock Holmes",
+   "tag": "El 221B de Baker Street en los Alpes",
+   "text": "En la iglesia inglesa, en el centro de Meiringen, se encuentra una fiel reproducción del salón del 221B de Baker Street. Arthur Conan Doyle conocía bien el valle y eligió las cataratas sobre el pueblo para el último combate entre Holmes y el profesor Moriarty. En la plaza espera un Holmes de bronce.",
+   "hl": [
+    "Reproducción del famoso salón de Baker Street",
+    "Estatua de Sherlock Holmes en la Conan Doyle Place",
+    "Entradas combinadas con el funicular del Reichenbach"
+   ]
+  },
+  "reichenbach-falls": {
+   "name": "Cataratas de Reichenbach",
+   "tag": "Donde desapareció Sherlock Holmes",
+   "text": "El Reichenbach cae unos 120 metros por la ladera sur del valle. Un nostálgico funicular con sus vagones originales de 24 plazas sube desde Willigen sobre el torrente y la garganta hasta los miradores. En «El problema final», Conan Doyle precipitó aquí a Holmes y a Moriarty; una estrella blanca en la roca marca el lugar.",
+   "hl": [
+    "Funicular histórico con vagones originales",
+    "Miradores junto a la cascada de 120 m",
+    "La estrella blanca de la caída de Holmes"
+   ]
+  },
+  "aare-gorge": {
+   "name": "Garganta del Aar",
+   "tag": "1,4 km a través de la roca",
+   "text": "Durante milenios, el glaciar y el río Aar abrieron un tajo en el Kirchet, la barrera rocosa entre Meiringen e Innertkirchen. Pasarelas recorren la garganta de 1,4 km, de hasta 200 metros de profundidad y en algunos puntos de apenas un metro de ancho, junto a marmitas glaciares y caliza pulida. El tren para en ambas entradas.",
+   "hl": [
+    "Pasarelas en lo más hondo de la estrecha garganta",
+    "Marmitas glaciares y caliza pulida",
+    "Parada de tren en las entradas oeste y este"
+   ]
+  },
+  "alpbach-gorge": {
+   "name": "Garganta del Alpbach",
+   "tag": "Una cascada a las afueras del pueblo",
+   "text": "El Alpbach baja del Hasliberg justo detrás de Meiringen. Un sendero rocoso sube junto a las cascadas a través de la garganta y, al final, una plataforma mirador sobresale seis metros sobre el borde.",
+   "hl": [
+    "Cascada a pocos minutos del centro",
+    "Plataforma a seis metros sobre la garganta",
+    "Paseo corto y refrescante en días de calor"
+   ]
+  },
+  "hasli-museum": {
+   "name": "Museo del Paisaje del Hasli",
+   "tag": "Vida y tradiciones del valle",
+   "text": "Junto a la iglesia, el museo regional cuenta la historia del Haslital: agricultura y artesanía, costumbres y las personas que dieron forma al valle. Un buen punto de partida antes de explorar la región.",
+   "hl": [
+    "Historia y costumbres locales",
+    "Oficios antiguos y objetos cotidianos",
+    "Visitas guiadas para grupos bajo petición"
+   ]
+  },
+  "climbing-hall": {
+   "name": "Rocódromo del Haslital",
+   "tag": "Escalada y búlder en Meiringen",
+   "text": "El rocódromo del Haslital ofrece unos 730 metros cuadrados de paredes y una zona de búlder, a pocos minutos del centro de Meiringen. Ideal para un día de lluvia o para entrenar antes de la roca de verdad.",
+   "hl": [
+    "730 m² de superficie de escalada",
+    "Zona de búlder",
+    "Buena opción en días de lluvia"
+   ]
+  },
+  "air-base": {
+   "name": "Base aérea de Meiringen",
+   "tag": "Cazas entre montañas",
+   "text": "La base de las Fuerzas Aéreas suizas se encuentra en el fondo del valle, entre campos y el Aar. Cuando los F/A-18 Hornet despegan por la pista 10/28, el estruendo resuena entre las paredes de roca y los aficionados a la aviación se reúnen alrededor del aeródromo.",
+   "hl": [
+    "Aviones de combate en un paisaje alpino",
+    "Paseos y carriles bici llanos alrededor del aeródromo",
+    "Consulte los días de vuelo antes de ir"
+   ]
+  },
+  "maegisalp": {
+   "name": "Mägisalp",
+   "tag": "En telecabina al Hasliberg",
+   "text": "Un teleférico le lleva de Meiringen a Reuti y las telecabinas continúan por Bidmi hasta Mägisalp, a unos 1700 metros. Arriba le esperan restaurantes de montaña, parques infantiles y amplias vistas sobre el valle. En invierno, Mägisalp está en el centro de la estación de esquí Meiringen-Hasliberg.",
+   "hl": [
+    "Teleférico y telecabinas directamente desde Meiringen",
+    "Inicio del sendero de los enanitos Muggestutz",
+    "Estación de esquí en invierno"
+   ]
+  },
+  "planplatten": {
+   "name": "Planplatten",
+   "tag": "Vistas desde 2245 m",
+   "text": "La telecabina Eagle-Express sube desde Mägisalp casi hasta la cima del Planplatten. Desde la cresta, la vista se extiende hacia el sur, más allá del Haslital, hasta los Engelhörner y el grupo del Wetterhorn. Los senderos continúan por la cresta hacia Melchsee-Frutt.",
+   "hl": [
+    "Panorama de los Alpes berneses",
+    "Rutas por la cresta hacia Melchsee-Frutt",
+    "Telecabina casi hasta la cumbre"
+   ]
+  },
+  "muggestutz": {
+   "name": "Sendero de los enanitos Muggestutz",
+   "tag": "Senderos familiares en el Hasliberg",
+   "text": "Los senderos Muggestutz siguen las historias de los enanitos del Hasliberg. El más conocido baja de Mägisalp a Bidmi, con casitas de enanitos y estaciones de juego por el camino. Un segundo sendero une Käserstatt y Lischen.",
+   "hl": [
+    "Casitas de enanitos y estaciones de juego",
+    "Dos senderos entre las estaciones",
+    "Un descenso fácil para piernas pequeñas"
+   ]
+  },
+  "kaeserstatt": {
+   "name": "Käserstatt",
+   "tag": "Terraza soleada sobre Wasserwendi",
+   "text": "Una telecabina sube desde Hasliberg Wasserwendi hasta Käserstatt, una meseta soleada con restaurantes de montaña y vistas hasta el Wetterhorn. Aquí empiezan el segundo sendero de los enanitos Muggestutz y paseos panorámicos fáciles; en invierno salen de aquí los esquiadores.",
+   "hl": [
+    "Telecabina desde Hasliberg Wasserwendi",
+    "Sendero Muggestutz hacia Lischen",
+    "Paseos fáciles con vistas a los Alpes"
+   ]
+  },
+  "bruenig-pass": {
+   "name": "Puerto del Brünig",
+   "tag": "Puerta a la Suiza central",
+   "text": "Este puerto bajo, a 1008 metros, une el Haslital con Lungern y Obwalden. El ferrocarril del Brünig, de vía métrica y con tramos de cremallera, lo cruza desde 1888. Cada verano se celebra en el puerto el Brünig-Schwinget, una de las fiestas clásicas de lucha suiza.",
+   "hl": [
+    "Histórico ferrocarril del Brünig",
+    "Fiesta de lucha suiza del Brünig",
+    "Rutas hacia Lungern y el Hasliberg"
+   ]
+  },
+  "rosenlaui-gorge": {
+   "name": "Garganta glaciar de Rosenlaui",
+   "tag": "Esculpida por el agua del glaciar",
+   "text": "Cascadas imponentes, grutas románticas, rocas pulidas de formas caprichosas: durante milenios, el agua de deshielo del glaciar de Rosenlaui ha esculpido esta garganta al pie de los Engelhörner, y sigue haciéndolo. Senderos, galerías y túneles cortos atraviesan la espuma del agua.",
+   "hl": [
+    "Senderos y túneles por la garganta",
+    "Cascadas alimentadas por el glaciar",
+    "Combínelo con el viaje en autobús postal por el valle del Reichenbach"
+   ]
+  },
+  "hotel-rosenlaui": {
+   "name": "Hotel Rosenlaui",
+   "tag": "Un hotel de montaña histórico",
+   "text": "El histórico Hotel Rosenlaui se encuentra en la antigua ruta de Meiringen a Grindelwald por la Grosse Scheidegg. Su restaurante y su terraza son una parada agradable entre la garganta glaciar y las rutas del valle del Reichenbach.",
+   "hl": [
+    "Hotel histórico en un valle apartado",
+    "Restaurante y terraza",
+    "En la ruta hacia la Grosse Scheidegg"
+   ]
+  },
+  "schwarzwaldalp-sawmill": {
+   "name": "Aserradero de Schwarzwaldalp",
+   "tag": "Un antiguo aserradero en el bosque",
+   "text": "En Schwarzwaldalp, al final de la carretera pública desde Meiringen, un aserradero histórico muestra cómo se cortaba la madera en la montaña. El hotel-chalet contiguo y la parada del autobús postal lo convierten en una parada cómoda camino de la Grosse Scheidegg.",
+   "hl": [
+    "Aserradero histórico",
+    "Final de la línea de autobús postal desde Meiringen",
+    "Rutas hacia la Grosse Scheidegg"
+   ]
+  },
+  "engelhorn-hut": {
+   "name": "Refugio Engelhorn",
+   "tag": "Refugio bajo las cumbres de escalada",
+   "text": "El refugio Engelhorn está a 1901 metros, bajo las torres calizas de los Engelhörner, una zona clásica de escalada. La subida desde Rosenlaui es empinada y gratificante, con vistas al glaciar de Rosenlaui y al valle del Reichenbach.",
+   "hl": [
+    "Refugio a 1901 m",
+    "Base para escalar en los Engelhörner",
+    "Subida empinada desde Rosenlaui"
+   ]
+  },
+  "gelmerbahn": {
+   "name": "Gelmerbahn",
+   "tag": "El funicular descubierto más empinado de Europa",
+   "text": "Con una pendiente de hasta el 106 por ciento, el Gelmerbahn es el funicular descubierto más empinado de Europa. Sube traqueteando durante doce minutos hasta el lago turquesa Gelmersee, a unos 1850 metros. Cada viaje admite 24 personas, así que reserve en línea con antelación.",
+   "hl": [
+    "Hasta un 106 % de pendiente",
+    "El Gelmersee turquesa en la cima",
+    "Los perros viajan con tarifa infantil"
+   ]
+  },
+  "handeck-bridge": {
+   "name": "Puente de la cascada de Handeck",
+   "tag": "70 metros sobre la cascada",
+   "text": "Junto a la estación inferior del Gelmerbahn, un puente colgante cruza la garganta de la cascada de Handeck a 70 metros sobre el agua. Ofrece una vista impresionante directamente sobre la cascada.",
+   "hl": [
+    "Puente colgante a 70 m sobre la garganta",
+    "Vista de la cascada de Handeck",
+    "Junto al Gelmerbahn"
+   ]
+  },
+  "grimsel-hospiz": {
+   "name": "Grimsel Hospiz",
+   "tag": "Un hotel histórico sobre el embalse",
+   "text": "El Grimsel Hospiz se alza sobre una roca encima del Grimselsee. En 1932 fue la primera casa con calefacción eléctrica de Europa y hoy se calienta con el calor residual de las centrales hidroeléctricas. En su bodega excavada en la roca, a casi 2000 metros, se guardan unos 300 vinos.",
+   "hl": [
+    "Hotel histórico junto al embalse",
+    "Bodega en la roca",
+    "Calefacción con calor de la energía hidráulica"
+   ]
+  },
+  "grimsel-pass": {
+   "name": "Puerto del Grimsel",
+   "tag": "2164 m entre Berna y el Valais",
+   "text": "La carretera del Grimsel sube entre embalses y granito desnudo hasta los 2164 metros, donde el Totensee marca la frontera con el Valais. El puerto está abierto en verano y es una parada muy apreciada por ciclistas, motoristas y pasajeros del autobús postal.",
+   "hl": [
+    "Puerto de alta montaña a 2164 m",
+    "El Totensee en la cima",
+    "Paisaje de granito y embalses"
+   ]
+  },
+  "kristall-guttannen": {
+   "name": "kriSTALL Guttannen",
+   "tag": "Al mundo de los cristales",
+   "text": "En un antiguo establo de Guttannen, kriSTALL lleva a los visitantes al interior de la montaña, donde los cristales crecieron durante millones de años en grietas oscuras. En lugar de largos paneles, la luz y el sonido cuentan cómo se forman los cristales.",
+   "hl": [
+    "Experiencia de cristales en un antiguo establo",
+    "Luz y sonido en lugar de paneles",
+    "Accesible en silla de ruedas"
+   ]
+  },
+  "trift-bridge": {
+   "name": "Puente de Trift",
+   "tag": "Puente colgante sobre el Triftsee",
+   "text": "El teleférico Triftbahn sube en diez minutos desde el Gadmental. Desde la estación superior, una caminata de aproximadamente una hora y media lleva al puente de Trift, uno de los puentes colgantes más espectaculares de los Alpes, muy por encima del Triftsee y del glaciar de Trift.",
+   "hl": [
+    "Puente colgante espectacular",
+    "Teleférico pequeño, se recomienda reservar",
+    "Ruta de montaña con vistas al glaciar de Trift"
+   ]
+  },
+  "taellibahn": {
+   "name": "Tällibahn y vía ferrata",
+   "tag": "Para los más aventureros",
+   "text": "El Tällibahn sube desde Gadmen hasta unos 1730 metros. Desde allí, familias con adolescentes y grupos se enfrentan, con casco y mosquetones, a la vía ferrata del Tälli. Los perros viajan gratis.",
+   "hl": [
+    "Teleférico desde Gadmen",
+    "Vía ferrata del Tälli",
+    "Los perros viajan gratis"
+   ]
+  },
+  "engstlensee": {
+   "name": "Engstlensee",
+   "tag": "Lago de montaña a 1850 m",
+   "text": "Al final de la carretera del Gental se encuentra el Engstlensee, un lago de montaña cristalino bajo las cumbres de la cadena del Titlis. El histórico hotel de montaña de Engstlenalp, un alquiler de barcas y senderos fáciles por la orilla lo convierten en una excursión clásica de verano desde el Haslital.",
+   "hl": [
+    "Lago de montaña cristalino",
+    "Alquiler de barcas en el lago",
+    "Histórico hotel de montaña de Engstlenalp"
+   ]
+  },
+  "ballenberg": {
+   "name": "Museo al aire libre de Ballenberg",
+   "tag": "El patrimonio rural de Suiza",
+   "text": "En Ballenberg se han reconstruido más de 100 edificios históricos de toda Suiza, desde granjas hasta talleres, con huertos, animales de granja y artesanos trabajando. Reserve un día entero: el recinto es grande y se recorre mejor a pie.",
+   "hl": [
+    "Casas históricas de toda Suiza",
+    "Animales de granja y huertos",
+    "Demostraciones de artesanía tradicional"
+   ]
+  },
+  "via-alpina-scheidegg": {
+   "name": "Via Alpina: Meiringen – Grosse Scheidegg",
+   "tag": "A la sombra del Wetterhorn",
+   "text": "Esta etapa de la Via Alpina, la ruta de largo recorrido por los Alpes suizos, sube desde Meiringen junto a las cataratas de Reichenbach hasta el tranquilo valle del Reichenbach. Por Rosenlaui y Schwarzwaldalp llega a la Grosse Scheidegg, bajo la cara norte del Wetterhorn. El autobús postal recorre la carretera del valle, así que la ruta se puede acortar en muchas paradas.",
+   "hl": [
+    "Junto a las cataratas de Reichenbach y Rosenlaui",
+    "El Wetterhorn sobre el puerto",
+    "Paradas de autobús postal por el camino"
+   ]
+  },
+  "via-alpina-engstlenalp": {
+   "name": "Via Alpina: Engstlenalp – Meiringen",
+   "tag": "Del lago a la cresta del Hasliberg",
+   "text": "Desde el Engstlensee, la Via Alpina sube por la Tannalp hasta la cresta panorámica del Planplatten y después baja por las terrazas del Hasliberg hasta Meiringen. Un día largo con grandes vistas; las telecabinas de Mägisalp y Reuti ahorran gran parte del descenso.",
+   "hl": [
+    "Engstlensee y Tannalp",
+    "Cresta cerca del Planplatten",
+    "Telecabinas para acortar el descenso"
+   ]
+  },
+  "viaberna-rosenlaui-reuti": {
+   "name": "ViaBerna: Rosenlaui – Hasliberg Reuti",
+   "tag": "Al otro lado del valle, hacia el sol",
+   "text": "Esta etapa de la ViaBerna, que cruza todo el cantón de Berna, baja desde Rosenlaui por los bosques del valle del Reichenbach hasta el fondo del Haslital y vuelve a subir hasta Reuti, en la soleada terraza del Hasliberg.",
+   "hl": [
+    "Bosques del valle del Reichenbach",
+    "Cruce de la llanura del Aar",
+    "Llegada a la terraza del Hasliberg"
+   ]
+  },
+  "viaberna-reuti-engstlenalp": {
+   "name": "ViaBerna: Hasliberg Reuti – Engstlenalp",
+   "tag": "Por la cresta hasta el Engstlensee",
+   "text": "Una larga etapa de montaña: desde Reuti el camino sube pasando por Mägisalp hasta la cresta cerca del Planplatten y sigue por altos pastos hasta Engstlenalp y su lago. Con las telecabinas hasta Mägisalp se evita la primera subida.",
+   "hl": [
+    "Las telecabinas ahorran la primera subida",
+    "Altos pastos con amplias vistas",
+    "Final en el Engstlensee"
+   ]
+  },
+  "viaberna-engstlenalp-gadmen": {
+   "name": "ViaBerna: Engstlenalp – Gadmen",
+   "tag": "Bajada al salvaje Gadmental",
+   "text": "Desde Engstlenalp el camino cruza un collado alto y después baja largamente hasta el Gadmental. Una etapa tranquila por pastos alpinos apartados; desde Gadmen el autobús postal le lleva de vuelta a Innertkirchen.",
+   "hl": [
+    "Pastos alpinos apartados",
+    "Largo descenso al Gadmental",
+    "Autobús postal desde Gadmen"
+   ]
+  },
+  "four-lakes": {
+   "name": "Ruta de los cuatro lagos",
+   "tag": "Melchsee, Tannensee, Engstlensee, Trübsee",
+   "text": "Una de las excursiones clásicas de la Suiza central une cuatro lagos de montaña. Desde Melchsee-Frutt pasa por el Tannensee y el Engstlensee, sube al Jochpass a 2207 metros y baja hasta el Trübsee, sobre Engelberg.",
+   "hl": [
+    "Cuatro lagos de montaña en un día",
+    "El Jochpass a 2207 m",
+    "Remontes en ambos extremos"
+   ]
+  },
+  "planplatten-melchsee": {
+   "name": "Planplatten – Melchsee-Frutt",
+   "tag": "Cresta con vistas a los lagos",
+   "text": "Desde la estación superior del Eagle-Express, el sendero sigue la cresta por el Balmeregghorn y baja hasta Melchsee-Frutt y sus lagos. Detrás, los Alpes berneses; delante, la suave meseta de lagos de Obwalden.",
+   "hl": [
+    "Cresta panorámica por el Balmeregghorn",
+    "Bajada al Melchsee",
+    "Telecabina hasta el inicio"
+   ]
+  },
+  "kaeserstatt-planplatten": {
+   "name": "Käserstatt – Planplatten",
+   "tag": "De la meseta soleada a la cresta",
+   "text": "Desde Käserstatt el camino sube de forma constante por Hääggen hasta el collado bajo el Planplatten. La vista se abre sobre el Haslital hasta el Wetterhorn y los Engelhörner; arriba, la telecabina Eagle-Express le baja a Mägisalp.",
+   "hl": [
+    "Subida constante con vistas abiertas",
+    "Panorama del Wetterhorn y los Engelhörner",
+    "Bajada en telecabina desde el Planplatten"
+   ]
+  },
+  "zwergenweg-lischen": {
+   "name": "Sendero Muggestutz Käserstatt – Lischen",
+   "tag": "Sendero de enanitos cuesta abajo para familias",
+   "text": "El segundo sendero de los enanitos Muggestutz baja desde Käserstatt hasta Lischen, con casitas de enanitos y estaciones de juego por el camino. Desde Lischen la telecabina le baja a Wasserwendi.",
+   "hl": [
+    "Casitas de enanitos y estaciones de juego",
+    "Bajada tranquila",
+    "Telecabina en ambos extremos"
+   ]
+  },
+  "gelmer-hut": {
+   "name": "Gelmersee – Refugio Gelmer",
+   "tag": "Del lago turquesa al granito",
+   "text": "Desde la estación superior del Gelmerbahn, el sendero bordea el Gelmersee y sube por losas de granito hasta el refugio Gelmer. Una ruta de montaña gratificante en puro granito del Grimsel, ideal para combinar con el funicular.",
+   "hl": [
+    "Junto al Gelmersee turquesa",
+    "Losas de granito y arroyos",
+    "Refugio con vistas"
+   ]
+  },
+  "windegg-hut": {
+   "name": "Underi Trift – Refugio Windegg",
+   "tag": "Subida corta, grandes vistas",
+   "text": "Desde la estación superior del Triftbahn, un sendero de montaña empinado pero corto lleva al refugio Windegg. Desde su terraza se ve la zona de Trift hasta el glaciar, y el puente de Trift no queda lejos.",
+   "hl": [
+    "Sendero corto y empinado",
+    "Terraza con vistas al glaciar",
+    "Combinable con el Triftbahn"
+   ]
+  },
+  "trift-hut": {
+   "name": "Puente de Trift – Refugio Trift",
+   "tag": "Ruta alpina sobre el glaciar",
+   "text": "Más allá del puente de Trift, una ruta alpina señalizada en blanco-azul-blanco sigue muy por encima del glaciar de Trift hasta el refugio Trift. Solo para montañeros expertos y con paso seguro, con equipo alpino y con buen tiempo.",
+   "hl": [
+    "Cruce del puente de Trift",
+    "Muy por encima del glaciar de Trift",
+    "Solo para expertos en alta montaña"
+   ]
+  },
+  "grimselsee-trail": {
+   "name": "Sendero del Grimselsee",
+   "tag": "Junto al embalse hacia el glaciar",
+   "text": "Desde el Grimsel Hospiz, un sendero de montaña sigue la orilla del Grimselsee hacia el glaciar del Unteraar. Losas de granito, cascadas y el agua turquesa lechosa la convierten en una de las rutas más bonitas del Grimsel. Vuelta por el mismo camino.",
+   "hl": [
+    "Losas de granito y cascadas",
+    "Embalse turquesa todo el camino",
+    "Vistas al glaciar del Unteraar"
+   ]
+  },
+  "oberaar": {
+   "name": "Grimsel – Oberaarsee",
+   "tag": "Al lago bajo el glaciar del Oberaar",
+   "text": "Desde el Grimsel, el sendero sube hasta el Oberaarsee, al pie del glaciar del Oberaar. Junto a la presa, el Berghaus Oberaar ofrece comida y alojamiento en plena alta montaña.",
+   "hl": [
+    "Embalse de alta montaña",
+    "Vistas al glaciar del Oberaar",
+    "Berghaus Oberaar junto a la presa"
+   ]
+  },
+  "baechlital-hut": {
+   "name": "Räterichsboden – Refugio Bächlital",
+   "tag": "A un valle de granito escondido",
+   "text": "Desde la presa del Räterichsbodensee, el sendero sube con fuerte pendiente al Bächlital, un valle tranquilo de granito y arroyos de deshielo, hasta el refugio Bächlital del Club Alpino Suizo.",
+   "hl": [
+    "Subida empinada desde el embalse",
+    "Valle de granito tranquilo",
+    "Refugio del Club Alpino Suizo"
+   ]
+  },
+  "maegisalp-gummen": {
+   "name": "Mägisalp – Gummen – Bidmi",
+   "tag": "Paseo panorámico fácil",
+   "text": "Un paseo fácil desde Mägisalp por los pastos del Hasliberg, pasando por Gummen, hasta Bidmi, con vistas al Haslital durante todo el camino. Con telecabinas en ambos extremos, una media jornada relajada.",
+   "hl": [
+    "Camino suave entre pastos alpinos",
+    "Vistas al valle todo el camino",
+    "Telecabinas en ambos extremos"
+   ]
+  },
+  "bruenig-brienzwiler": {
+   "name": "Brünig – Brienzwiler",
+   "tag": "Bajando hacia el Ballenberg",
+   "text": "Desde el puerto del Brünig, un sendero de montaña baja entre bosques y prados hasta Brienzwiler, el pueblo junto al museo al aire libre de Ballenberg. Ideal para combinar con una visita al museo.",
+   "hl": [
+    "Caminos de bosque y prado",
+    "Vistas hacia el lago de Brienz",
+    "Final cerca del museo de Ballenberg"
+   ]
+  },
+  "reichenbachtal": {
+   "name": "Rosenlaui – Kaltenbrunnen",
+   "tag": "Paseo fácil por el valle del Reichenbach",
+   "text": "Un paseo tranquilo valle abajo desde Rosenlaui hasta Kaltenbrunnen, entre bosques y prados junto al torrente, bajo los Engelhörner. Vuelta en autobús postal.",
+   "hl": [
+    "Fácil y casi todo cuesta abajo",
+    "Junto al torrente Reichenbach",
+    "Autobús postal de vuelta a Meiringen"
+   ]
+  },
+  "scheidegg-schwarzwaldalp": {
+   "name": "Schwarzwaldalp – Grosse Scheidegg",
+   "tag": "Bajo el Wetterhorn",
+   "text": "Desde Schwarzwaldalp, un sendero de montaña sube por pastos alpinos hasta el puerto de la Grosse Scheidegg, bajo el imponente Wetterhorn. Desde el puerto, los autobuses postales bajan a Grindelwald y vuelven a Meiringen.",
+   "hl": [
+    "La cara norte del Wetterhorn de cerca",
+    "Pastos alpinos y cencerros",
+    "Autobús postal desde el puerto"
+   ]
+  },
+  "engstlenalp-jochpass": {
+   "name": "Engstlenalp – Jochpass",
+   "tag": "Subida al puerto sobre el lago",
+   "text": "Desde el Engstlensee, el sendero sube al Jochpass, a 2207 metros, el paso hacia el Trübsee y Engelberg. Al mirar atrás, el lago aparece de un azul intenso bajo las cumbres.",
+   "hl": [
+    "Subida constante hasta 2207 m",
+    "Vista atrás al Engstlensee",
+    "Paso hacia el Trübsee y Engelberg"
+   ]
+  }
+ }
+}
