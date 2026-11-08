@@ -31,3 +31,9 @@ The scripts in `build/` regenerate the map data from the sources below.
 - Aerial imagery: © swisstopo (SWISSIMAGE)
 - Elevation: Terrain Tiles on AWS Open Data
 - Buildings, lifts, peaks and hiking routes: © OpenStreetMap contributors (ODbL)
+
+## License
+
+The code and texts are licensed under the [PolyForm Noncommercial License 1.0.0](LICENSE.md). You can use, change and share them for personal and noncommercial purposes. Commercial use is not allowed. If you want to use it commercially, get in touch.
+
+The map data keeps the licenses of its sources listed above.
